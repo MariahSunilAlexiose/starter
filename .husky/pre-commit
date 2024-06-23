@@ -3,11 +3,7 @@
 
 echo 'Styling, testing your project before committing...'
 
-yarn check-lint ||
-(
-        echo 'ESLint Check Failed...'
-        false; 
-)
+npx lint-staged
 
 # Check tsconfig standards
 yarn check-types ||
