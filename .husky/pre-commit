@@ -1,0 +1,19 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo 'Styling, testing your project before committing...'
+
+yarn check-lint ||
+(
+        echo 'ESLint Check Failed...'
+        false; 
+)
+
+# Check tsconfig standards
+yarn check-types ||
+(
+    echo 'Failed Type check...'
+    false;
+)
+
+echo 'Committing...'
