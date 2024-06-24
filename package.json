@@ -6,28 +6,44 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --dir src && eslint . --ext ts --ext tsx --ext js --config .eslintrc.json",
     "prepare": "husky",
-    "check-types": "tsc --pretty --noEmit"
+    "lint-staged": "lint-staged",
+    "check-types": "tsc --pretty --noEmit",
+    "check-prettier": "prettier --check --ignore-path .prettierignore .",
+    "prettier": "prettier --write --ignore-path .prettierignore .",
+    "format": "eslint . --ext ts --ext tsx --ext js && next lint && prettier --write --ignore-path .prettierignore . && tsc --pretty --noEmit"
   },
   "lint-staged": {
-    "*.{ts,tsx, js}": ["next lint", "eslint", "eslint --fix"]
+    "**/*": [
+      "yarn lint",
+      "yarn prettier"
+    ]
   },
   "dependencies": {
-    "next": "14.2.4",
+    "next": "^14.2.4",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
+    "eslint": "8.57.0",
     "eslint-config-next": "14.2.4",
+    "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "postcss": "^8",
+    "prettier": "^3.3.2",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
   }
 }

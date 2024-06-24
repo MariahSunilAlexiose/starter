@@ -1,6 +1,32 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:react/jsx-runtime"],
-  "rules":{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:react/jsx-runtime",
+    "next",
+    "prettier"
+  ],
+  "ignorePatterns": [
+    "*.css",
+    "*.json",
+    ".md",
+    ".husky/*",
+    ".next/*",
+    ".vscode/*",
+    "node_modules/*",
+    "public/*",
+    "next-env.d.ts",
+    "next.config.ts",
+    "yarn.lock",
+    ".env*.local",
+    ".gitignore",
+    ".prettierignore",
+    "next.config.mjs",
+    "postcss.config.mjs",
+    "README.md",
+    "tailwind.config.ts",
+    "tsconfig.tsbuildinfo"
+  ],
+  "rules": {
     "valid-typeof": "error",
     "use-isnan": "error",
     "no-unused-vars": "error",
