@@ -1,4 +1,4 @@
-import { Separator, ThemeToggle } from "@/components";
+import { Input, Separator, ThemeToggle } from "@/components";
 import { Accordion, Cards } from "@/sections";
 
 export default function Home() {
@@ -8,9 +8,12 @@ export default function Home() {
         <ThemeToggle />
       </div>
       <Cards />
-      <Separator styles="my-10 w-full" />
+      <Separator styles="my-10" />
       <div className="flex w-full flex-col items-center">
         <Accordion />
+      </div>
+      <div className="my-10 w-1/2">
+        <Input type="email" placeholder="Email" />
       </div>
     </main>
   );
