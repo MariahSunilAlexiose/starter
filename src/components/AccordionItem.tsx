@@ -14,7 +14,7 @@ const Accordion = ({ trigger, content }: Props) => {
   return (
     <div className="border-b">
       <div
-        className="flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:font-bold"
+        className="flex flex-1 cursor-pointer items-center justify-between py-4 text-sm font-medium transition-all hover:font-bold"
         onClick={() => setIsOpen(!isOpen)}
       >
         <p className={`${isOpen ? "font-bold" : ""}`}>{trigger}</p>

@@ -1,4 +1,4 @@
-import { ThemeToggle } from "@/components";
+import { Separator, ThemeToggle } from "@/components";
 import { Accordion, Cards } from "@/sections";
 
 export default function Home() {
@@ -8,7 +8,8 @@ export default function Home() {
         <ThemeToggle />
       </div>
       <Cards />
-      <div className="flex w-full flex-col items-center pt-20">
+      <Separator styles="my-10 w-full" />
+      <div className="flex w-full flex-col items-center">
         <Accordion />
       </div>
     </main>
