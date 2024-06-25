@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"node src/scripts/killPort.js && yarn json-server --watch ./_data/db.json --port 4000\" \"next dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src && eslint . --ext ts --ext tsx --ext js --config .eslintrc.json",

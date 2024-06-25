@@ -1,3 +1,4 @@
+import Card from "./Card";
 import ThemeToggle from "./ThemeToggle";
 
-export { ThemeToggle };
+export { ThemeToggle, Card };
