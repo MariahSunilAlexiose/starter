@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Avatar } from ".";
+import { Avatar, Badge } from ".";
 import Button from "./Button";
 
 type Props = {
@@ -27,7 +27,7 @@ const Card = ({ title, image, description, content, footer }: Props) => {
       </div>
       <div className="flex items-center justify-between p-6 pt-0">
         <Button title="View Recipe" />
-        {footer && <p>Vegan!</p>}
+        {footer && <Badge variant="outline" title="Vegan!" />}
       </div>
     </div>
   );
