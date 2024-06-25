@@ -1,4 +1,6 @@
-import React from "react";
+import Avatar from "./Avatar";
+import Badge from "./Badge";
+import Button from "./Button";
 
 type Props = {
   title: string;
@@ -8,19 +10,22 @@ type Props = {
   footer: boolean;
 };
 
-const Card = ({ title, description, content, footer }: Props) => {
+const Card = ({ title, image, description, content, footer }: Props) => {
   return (
     <div className="flex flex-col justify-between rounded-xl border bg-card text-card-foreground shadow">
-      <div className="flex flex-col items-center gap-2 space-y-1.5 p-6">
-        <h3 className="font-semibold leading-none tracking-tight">{title}</h3>
-        <p className="text-sm text-muted-foreground">{description}</p>
+      <div className="flex flex-row items-center gap-2 space-y-1.5 p-6">
+        <Avatar image={`/assets/images/${image}`} title={title} />
+        <div>
+          <h3 className="font-semibold leading-none tracking-tight">{title}</h3>
+          <p className="text-sm text-muted-foreground">{description}</p>
+        </div>
       </div>
       <div className="p-6 pt-0">
         <p>{content}</p>
       </div>
       <div className="flex items-center justify-between p-6 pt-0">
-        <button>View Recipe</button>
-        {footer && <p>Vegan!</p>}
+        <Button title="View Recipes" />
+        {footer && <Badge variant="accent" title="Vegan!" />}
       </div>
     </div>
   );

@@ -1,5 +1,3 @@
-import React from "react";
-
 type Props = {
   variant?: "default" | "destructive" | "outline" | "accent" | "ghost" | "link";
   size?: "default" | "sm" | "lg" | "icon";
