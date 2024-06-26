@@ -5,6 +5,7 @@ import Button from "./Button";
 import Card from "./Card";
 import Input from "./Input";
 import Label from "./Label";
+import RadioInput from "./RadioInput";
 import Separator from "./Separator";
 import TextArea from "./TextArea";
 import ThemeToggle from "./ThemeToggle";
@@ -20,4 +21,5 @@ export {
   Input,
   Label,
   TextArea,
+  RadioInput,
 };

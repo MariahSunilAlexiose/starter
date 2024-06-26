@@ -6,3 +6,8 @@ export type Recipe = {
   content: string;
   vegan: boolean;
 };
+
+export type Radio = {
+  title: string;
+  value: string;
+};

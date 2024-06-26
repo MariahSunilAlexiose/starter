@@ -1,5 +1,5 @@
 import { Input, Label, Separator, TextArea, ThemeToggle } from "@/components";
-import { Accordion, Cards } from "@/sections";
+import { Accordion, Cards, RadioGroup } from "@/sections";
 
 export default function Home() {
   return (
@@ -17,6 +17,9 @@ export default function Home() {
         <Input type="email" placeholder="Email" />
       </div>
       <TextArea placeholder="Type your message here." />
+      <div className="py-10">
+        <RadioGroup />
+      </div>
     </main>
   );
 }

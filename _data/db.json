@@ -72,5 +72,10 @@
       "content": "Homemade vegetarian chocolate chip cookies that are soft and gooey inside.",
       "vegan": false
     }
+  ],
+  "radio_options": [
+    { "title": "Default", "value": "r1" },
+    { "title": "Comfortable", "value": "r2" },
+    { "title": "Compact", "value": "r3" }
   ]
 }
