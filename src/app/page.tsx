@@ -1,4 +1,5 @@
 import {
+  Alert,
   Checkbox,
   Input,
   Separator,
@@ -15,6 +16,11 @@ export default function Home() {
       </div>
       <Cards />
       <Separator styles="my-10" />
+      <Alert
+        variant="default"
+        title="Heads up!"
+        description="You can add components to your app using the cli."
+      />
       <div className="flex w-full flex-col items-center">
         <Accordion />
       </div>

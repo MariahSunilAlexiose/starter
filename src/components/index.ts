@@ -1,4 +1,5 @@
 import AccordionItem from "./AccordionItem";
+import Alert from "./Alert";
 import Avatar from "./Avatar";
 import Badge from "./Badge";
 import Button from "./Button";
@@ -12,6 +13,7 @@ import TextArea from "./TextArea";
 import ThemeToggle from "./ThemeToggle";
 
 export {
+  Alert,
   Checkbox,
   ThemeToggle,
   Card,
