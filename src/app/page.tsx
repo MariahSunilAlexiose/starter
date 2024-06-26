@@ -1,4 +1,10 @@
-import { Input, Label, Separator, TextArea, ThemeToggle } from "@/components";
+import {
+  Checkbox,
+  Input,
+  Separator,
+  TextArea,
+  ThemeToggle,
+} from "@/components";
 import { Accordion, Cards, RadioGroup } from "@/sections";
 
 export default function Home() {
@@ -13,7 +19,7 @@ export default function Home() {
         <Accordion />
       </div>
       <div className="my-10 w-1/2">
-        <Label>Email</Label>
+        <Checkbox id="email" label="Email" />
         <Input type="email" placeholder="Email" />
       </div>
       <TextArea placeholder="Type your message here." />
