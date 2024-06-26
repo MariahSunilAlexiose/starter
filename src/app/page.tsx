@@ -1,4 +1,4 @@
-import { Input, Label, Separator, ThemeToggle } from "@/components";
+import { Input, Label, Separator, TextArea, ThemeToggle } from "@/components";
 import { Accordion, Cards } from "@/sections";
 
 export default function Home() {
@@ -16,6 +16,7 @@ export default function Home() {
         <Label>Email</Label>
         <Input type="email" placeholder="Email" />
       </div>
+      <TextArea placeholder="Type your message here." />
     </main>
   );
 }

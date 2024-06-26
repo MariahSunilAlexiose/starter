@@ -6,6 +6,7 @@ import Card from "./Card";
 import Input from "./Input";
 import Label from "./Label";
 import Separator from "./Separator";
+import TextArea from "./TextArea";
 import ThemeToggle from "./ThemeToggle";
 
 export {
@@ -18,4 +19,5 @@ export {
   Separator,
   Input,
   Label,
+  TextArea,
 };
