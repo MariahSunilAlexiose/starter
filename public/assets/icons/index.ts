@@ -3,5 +3,6 @@ import sun from "./sun.svg"
 import ChevronDown from './ChevronDown'
 import terminal from './terminal.svg'
 import exclamationCircle from './exclamation-circle.svg'
+import close from './close.svg'
 
-export { sun, Moon, ChevronDown, terminal, exclamationCircle }
+export { sun, Moon, ChevronDown, terminal, exclamationCircle, close }

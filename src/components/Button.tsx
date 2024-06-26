@@ -1,7 +1,9 @@
 type Props = {
   variant?: "default" | "destructive" | "outline" | "accent" | "ghost" | "link";
   size?: "default" | "sm" | "lg" | "icon";
-  title: string;
+  children: React.ReactNode;
+  type?: "submit" | "reset" | "button";
+  className?: string;
 };
 
 const variants = {
@@ -23,12 +25,19 @@ const variants = {
   },
 };
 
-const Button = ({ variant = "default", size = "default", title }: Props) => {
+const Button = ({
+  variant = "default",
+  size = "default",
+  children,
+  type,
+  className,
+}: Props) => {
   return (
     <button
-      className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-300 ease-out focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 ${variants.variant[variant]} ${variants.size[size]}`}
+      type={type}
+      className={`${className} inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors duration-300 ease-out focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 ${variants.variant[variant]} ${variants.size[size]}`}
     >
-      {title}
+      {children}
     </button>
   );
 };

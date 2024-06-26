@@ -20,7 +20,7 @@ const Checkbox = ({ id, label }: Props) => {
         checked={checked}
         onChange={(e) => setChecked(e.target.checked)}
       />
-      {label && <Label>{label}</Label>}
+      {label && <Label htmlFor={label}>{label}</Label>}
     </div>
   );
 };

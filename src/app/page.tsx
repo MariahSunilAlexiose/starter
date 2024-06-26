@@ -1,11 +1,4 @@
-import {
-  Alert,
-  Checkbox,
-  Input,
-  Separator,
-  TextArea,
-  ThemeToggle,
-} from "@/components";
+import { Alert, Dialog, Separator, TextArea, ThemeToggle } from "@/components";
 import { Accordion, Cards, RadioGroup } from "@/sections";
 
 export default function Home() {
@@ -15,22 +8,24 @@ export default function Home() {
         <ThemeToggle />
       </div>
       <Cards />
-      <Separator styles="my-10" />
-      <Alert
-        variant="default"
-        title="Heads up!"
-        description="You can add components to your app using the cli."
-      />
-      <div className="flex w-full flex-col items-center">
+      <Separator className="my-10" />
+
+      <div className="grid w-full grid-cols-2 grid-rows-1 items-center gap-4 pt-10">
         <Accordion />
-      </div>
-      <div className="my-10 w-1/2">
-        <Checkbox id="email" label="Email" />
-        <Input type="email" placeholder="Email" />
-      </div>
-      <TextArea placeholder="Type your message here." />
-      <div className="py-10">
-        <RadioGroup />
+        <div>
+          <Alert
+            variant="default"
+            title="Heads up!"
+            description="You can add components to your app using the cli."
+          />
+          <div className="flex justify-center gap-10 pt-5">
+            <TextArea placeholder="Type your message here." />
+          </div>
+          <div className="grid grid-cols-2 grid-rows-1 pt-5">
+            <RadioGroup />
+            <Dialog />
+          </div>
+        </div>
       </div>
     </main>
   );

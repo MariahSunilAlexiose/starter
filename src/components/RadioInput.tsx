@@ -15,12 +15,12 @@ const RadioInput = ({ title, value, selectedValue, onValueChange }: Props) => {
     <div className="flex items-center space-x-2">
       <input
         type="radio"
-        className="aspect-square h-4 w-4 rounded-full border border-primary text-primary shadow focus:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+        className="accent-primary"
         value={title}
         onChange={() => onValueChange(value)}
         checked={value === selectedValue}
       />
-      <Label>{title}</Label>
+      <Label htmlFor={title}>{title}</Label>
     </div>
   );
 };

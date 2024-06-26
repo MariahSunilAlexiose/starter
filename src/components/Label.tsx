@@ -1,14 +1,17 @@
-import { ReactNode } from "react";
-
 type Props = {
-  children: ReactNode;
+  children: React.ReactNode;
+  className?: string;
+  htmlFor: string;
 };
 
-const Label = ({ children }: Props) => {
+const Label = ({ children, className, htmlFor }: Props) => {
   return (
-    <div className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+    <label
+      htmlFor={htmlFor}
+      className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${className}`}
+    >
       {children}
-    </div>
+    </label>
   );
 };
 
