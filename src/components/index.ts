@@ -4,6 +4,7 @@ import Badge from "./Badge";
 import Button from "./Button";
 import Card from "./Card";
 import Input from "./Input";
+import Label from "./Label";
 import Separator from "./Separator";
 import ThemeToggle from "./ThemeToggle";
 
@@ -16,4 +17,5 @@ export {
   Button,
   Separator,
   Input,
+  Label,
 };

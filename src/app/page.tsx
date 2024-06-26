@@ -1,4 +1,4 @@
-import { Input, Separator, ThemeToggle } from "@/components";
+import { Input, Label, Separator, ThemeToggle } from "@/components";
 import { Accordion, Cards } from "@/sections";
 
 export default function Home() {
@@ -13,6 +13,7 @@ export default function Home() {
         <Accordion />
       </div>
       <div className="my-10 w-1/2">
+        <Label>Email</Label>
         <Input type="email" placeholder="Email" />
       </div>
     </main>
