@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Accordion = ({ trigger, content }: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <div className="border-b">
       <div

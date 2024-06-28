@@ -9,11 +9,13 @@ import Dialog from "./Dialog";
 import Input from "./Input";
 import Label from "./Label";
 import RadioInput from "./RadioInput";
+import Select from "./Select";
 import Separator from "./Separator";
 import TextArea from "./TextArea";
 import ThemeToggle from "./ThemeToggle";
 
 export {
+  Select,
   Dialog,
   Alert,
   Checkbox,

@@ -11,7 +11,6 @@ type Props = {
 
 const Checkbox = ({ id, label }: Props) => {
   const [checked, setChecked] = useState<boolean>(false);
-  console.log(checked);
   return (
     <div className="flex items-center space-x-3" id={id}>
       <input

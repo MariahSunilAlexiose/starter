@@ -1,5 +1,5 @@
 import { Alert, Dialog, Separator, TextArea, ThemeToggle } from "@/components";
-import { Accordion, Cards, RadioGroup } from "@/sections";
+import { Accordion, Cards, RadioGroup, SelectSection } from "@/sections";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       </div>
       <Cards />
       <Separator className="my-10" />
-
+      <SelectSection />
       <div className="grid w-full grid-cols-2 grid-rows-1 items-center gap-4 pt-10">
         <Accordion />
         <div>

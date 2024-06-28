@@ -77,5 +77,33 @@
     { "title": "Default", "value": "r1" },
     { "title": "Comfortable", "value": "r2" },
     { "title": "Compact", "value": "r3" }
+  ],
+  "select_options": [
+    {
+      "title": "Audi",
+      "value": "audi"
+    },
+    {
+      "title": "BMW",
+      "value": "bmw"
+    },
+    {
+      "title": "Citroen",
+      "value": "citroen"
+    }
+  ],
+  "accordion": [
+    {
+      "trigger": "Is it accessible?",
+      "content": "Yes. It adheres to the WAI-ARIA design pattern."
+    },
+    {
+      "trigger": "Is it accessible?",
+      "content": "Yes. It adheres to the WAI-ARIA design pattern."
+    },
+    {
+      "trigger": "Is it accessible?",
+      "content": "Yes. It adheres to the WAI-ARIA design pattern."
+    }
   ]
 }

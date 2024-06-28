@@ -3,33 +3,28 @@
 import { useEffect, useState } from "react";
 
 import { Card } from "@/components";
+import { fetchData } from "@/scripts/useFetchData";
 import { Recipe } from "@/types";
 
-async function getRecipes(): Promise<Recipe[]> {
-  const result = await fetch("http://localhost:4000/recipes");
-  return result.json();
-}
-
 function Cards() {
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
-
+  const [item, setItem] = useState<Recipe[]>([]);
   useEffect(() => {
-    const fetchRecipes = async () => {
-      const newRecipes = await getRecipes();
-      setRecipes(newRecipes);
+    const fetchOptions = async () => {
+      const newItem = await fetchData<Recipe[]>("recipes");
+      setItem(newItem);
     };
-    fetchRecipes();
+    fetchOptions();
   }, []);
   return (
     <div className="grid grid-cols-3 gap-8">
-      {recipes.map((recipe) => (
+      {item.map((item) => (
         <Card
-          key={recipe.id}
-          title={recipe.title}
-          description={recipe.description}
-          content={recipe.content}
-          footer={recipe.vegan}
-          image={recipe.image}
+          key={item.id}
+          title={item.title}
+          description={item.description}
+          content={item.content}
+          footer={item.vegan}
+          image={item.image}
         />
       ))}
     </div>
