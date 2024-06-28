@@ -1,4 +1,11 @@
-import { Alert, Dialog, Separator, TextArea, ThemeToggle } from "@/components";
+import {
+  Alert,
+  Dialog,
+  Popover,
+  Separator,
+  TextArea,
+  ThemeToggle,
+} from "@/components";
 import { Accordion, Cards, RadioGroup, SelectSection } from "@/sections";
 
 export default function Home() {
@@ -21,9 +28,10 @@ export default function Home() {
           <div className="flex justify-center gap-10 pt-5">
             <TextArea placeholder="Type your message here." />
           </div>
-          <div className="grid grid-cols-2 grid-rows-1 pt-5">
+          <div className="grid grid-cols-3 grid-rows-1 pt-5">
             <RadioGroup />
             <Dialog />
+            <Popover className="w-52" />
           </div>
         </div>
       </div>

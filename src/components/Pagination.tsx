@@ -90,7 +90,6 @@ const Pagination = ({
 
   // Function to render page numbers with ellipsis
   const renderPages = () => {
-    console.log(currentPage);
     const renderedPages = activePages.map((page, idx) => (
       <PaginationItem
         key={idx}

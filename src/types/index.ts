@@ -28,4 +28,5 @@ export type ButtonProps = {
   children: React.ReactNode;
   type?: "submit" | "reset" | "button";
   className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
