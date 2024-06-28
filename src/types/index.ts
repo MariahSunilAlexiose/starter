@@ -21,3 +21,11 @@ export type AccordionProps = {
   trigger: string;
   content: string;
 };
+
+export type ButtonProps = {
+  variant?: "default" | "destructive" | "outline" | "accent" | "ghost" | "link";
+  size?: "default" | "sm" | "lg" | "icon";
+  children: React.ReactNode;
+  type?: "submit" | "reset" | "button";
+  className?: string;
+};

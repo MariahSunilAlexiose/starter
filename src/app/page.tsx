@@ -8,7 +8,7 @@ export default function Home() {
         <ThemeToggle />
       </div>
       <Cards />
-      <Separator className="my-10" />
+      <Separator className="mb-10" />
       <SelectSection />
       <div className="grid w-full grid-cols-2 grid-rows-1 items-center gap-4 pt-10">
         <Accordion />
