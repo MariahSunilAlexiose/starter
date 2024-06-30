@@ -5,21 +5,19 @@ import Badge from "./Badge";
 import Button from "./Button";
 import Card from "./Card";
 import Checkbox from "./Checkbox";
+import Combobox from "./Combobox";
 import Dialog from "./Dialog";
 import Input from "./Input";
 import Label from "./Label";
 import Pagination from "./Pagination";
-import Popover from "./Popover";
 import RadioInput from "./RadioInput";
-import Select from "./Select";
 import Separator from "./Separator";
 import TextArea from "./TextArea";
 import ThemeToggle from "./ThemeToggle";
 
 export {
-  Popover,
+  Combobox,
   Pagination,
-  Select,
   Dialog,
   Alert,
   Checkbox,

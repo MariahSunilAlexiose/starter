@@ -1,12 +1,12 @@
 import {
   Alert,
+  Combobox,
   Dialog,
-  Popover,
   Separator,
   TextArea,
   ThemeToggle,
 } from "@/components";
-import { Accordion, Cards, RadioGroup, SelectSection } from "@/sections";
+import { Accordion, Cards, RadioGroup } from "@/sections";
 
 export default function Home() {
   return (
@@ -16,7 +16,6 @@ export default function Home() {
       </div>
       <Cards />
       <Separator className="mb-10" />
-      <SelectSection />
       <div className="grid w-full grid-cols-2 grid-rows-1 items-center gap-4 pt-10">
         <Accordion />
         <div>
@@ -31,7 +30,7 @@ export default function Home() {
           <div className="grid grid-cols-3 grid-rows-1 pt-5">
             <RadioGroup />
             <Dialog />
-            <Popover className="w-52" />
+            <Combobox />
           </div>
         </div>
       </div>
