@@ -6,7 +6,7 @@ type Props = {
 const Separator = ({ orientation = "horizontal", className }: Props) => {
   return (
     <div
-      className={`shrink-0 bg-border ${orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]"} ${className}`}
+      className={`${orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]"} ${className} shrink-0 bg-border`}
     ></div>
   );
 };

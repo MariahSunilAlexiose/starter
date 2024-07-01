@@ -4,15 +4,17 @@ import { useState } from "react";
 
 import { ChevronDown } from "@/icons";
 
+import { Separator } from ".";
+
 type Props = {
   trigger: string;
   content: string;
 };
 
-const Accordion = ({ trigger, content }: Props) => {
+const AccordionItem = ({ trigger, content }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div className="border-b">
+    <div>
       <div
         className="flex flex-1 cursor-pointer items-center justify-between py-4 text-sm font-medium transition-all hover:font-bold"
         onClick={() => setIsOpen(!isOpen)}
@@ -27,8 +29,9 @@ const Accordion = ({ trigger, content }: Props) => {
           <div className="pb-4 pt-0">{content}</div>
         </div>
       )}
+      <Separator />
     </div>
   );
 };
 
-export default Accordion;
+export default AccordionItem;

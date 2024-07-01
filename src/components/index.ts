@@ -12,10 +12,12 @@ import Label from "./Label";
 import Pagination from "./Pagination";
 import RadioInput from "./RadioInput";
 import Separator from "./Separator";
+import Tabs from "./Tabs";
 import TextArea from "./TextArea";
 import ThemeToggle from "./ThemeToggle";
 
 export {
+  Tabs,
   Combobox,
   Pagination,
   Dialog,
