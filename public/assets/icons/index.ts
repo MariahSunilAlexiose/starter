@@ -1,4 +1,4 @@
-import Moon from "./moon"
+import moon from "./moon.svg"
 import sun from "./sun.svg"
 import ChevronDown from './ChevronDown'
 import terminal from './terminal.svg'
@@ -11,4 +11,4 @@ import chevronUpDown from './chevron-up-down.svg'
 import check from './check.svg'
 import magnifyingGlass from './magnifying-glass.svg'
 
-export { magnifyingGlass, check, sun, Moon, ChevronDown, terminal, exclamationCircle, close, ellipsisHorizontal, chevronRight, chevronLeft, chevronUpDown }
+export { magnifyingGlass, check, sun, moon, ChevronDown, terminal, exclamationCircle, close, ellipsisHorizontal, chevronRight, chevronLeft, chevronUpDown }

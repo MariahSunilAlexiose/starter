@@ -12,9 +12,9 @@ import Label from "./Label";
 import Pagination from "./Pagination";
 import RadioInput from "./RadioInput";
 import Separator from "./Separator";
+import Switch from "./Switch";
 import Tabs from "./Tabs";
 import TextArea from "./TextArea";
-import ThemeToggle from "./ThemeToggle";
 
 export {
   Tabs,
@@ -23,7 +23,7 @@ export {
   Dialog,
   Alert,
   Checkbox,
-  ThemeToggle,
+  Switch,
   Card,
   AccordionItem,
   Avatar,

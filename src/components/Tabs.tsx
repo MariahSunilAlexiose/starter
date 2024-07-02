@@ -2,9 +2,12 @@
 
 import { useEffect, useState } from "react";
 
+import { dark, light } from "@/context";
+import { moon, sun } from "@/icons";
+import { useTheme } from "@/providers";
 import { Accordion, Cards, RadioGroup } from "@/sections";
 
-import { Alert, Combobox, Dialog, TextArea } from ".";
+import { Alert, Combobox, Dialog, Switch, TextArea } from ".";
 import Skeleton from "./Skeleton";
 
 type TabProps = {
@@ -28,8 +31,11 @@ const TabContent = ({ children }: { children: React.ReactNode }) => {
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState<string>("cards");
-
   const [loading, setLoading] = useState(true);
+  const { theme, setTheme } = useTheme();
+  const toggleTheme = () => {
+    setTheme(theme === dark ? light : dark);
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -40,18 +46,29 @@ const Tabs = () => {
   return (
     <div>
       {loading ? (
-        <Skeleton className="h-9 w-24 rounded p-1" />
+        <div className="flex justify-between pt-20">
+          <Skeleton className="h-9 w-24 rounded p-1" />
+          <Skeleton className="h-9 w-24 rounded-full p-1" />
+        </div>
       ) : (
-        <div className="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground">
-          <TabTrigger
-            label="Cards"
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-          <TabTrigger
-            label="Data"
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
+        <div className="flex justify-between pt-20">
+          <div className="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground">
+            <TabTrigger
+              label="Cards"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
+            <TabTrigger
+              label="Data"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
+          </div>
+          <Switch
+            clickFn={toggleTheme}
+            expr={theme === dark}
+            img1={sun}
+            img2={moon}
           />
         </div>
       )}
