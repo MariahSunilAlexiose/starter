@@ -1,3 +1,3 @@
-import ThemeToggle from "./ThemeToggle";
+import Switch from "./Switch";
 
-export { ThemeToggle };
+export { Switch };
