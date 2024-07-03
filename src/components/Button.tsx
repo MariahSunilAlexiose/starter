@@ -1,3 +1,5 @@
+"use client";
+
 import { ButtonVariants } from "@/constants";
 import { ButtonProps } from "@/types";
 
@@ -5,7 +7,7 @@ const Button = ({
   variant = "default",
   size = "default",
   children,
-  type,
+  type = "button",
   className,
   onClick,
 }: ButtonProps) => {

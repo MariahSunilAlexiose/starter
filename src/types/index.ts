@@ -22,11 +22,13 @@ export type AccordionProps = {
   content: string;
 };
 
+/* eslint-disable */
 export type ButtonProps = {
   variant?: "default" | "destructive" | "outline" | "accent" | "ghost" | "link";
   size?: "default" | "sm" | "lg" | "icon";
   children: React.ReactNode;
   type?: "submit" | "reset" | "button";
   className?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
+/* eslint-enable */

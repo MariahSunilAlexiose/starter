@@ -24,7 +24,7 @@ const Card = ({ title, image, description, content, footer }: Props) => {
         <p>{content}</p>
       </div>
       <div className="flex items-center justify-between p-6 pt-0">
-        <Button type="button">View Recipes</Button>
+        <Button>View Recipes</Button>
         {footer && <Badge variant="accent" title="Vegan!" />}
       </div>
     </div>

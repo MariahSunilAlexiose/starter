@@ -1,13 +1,13 @@
 export const ButtonVariants = {
   variant: {
-    default: "bg-primary/75 text-primary-foreground shadow hover:bg-primary",
+    default: "bg-primary text-primary-foreground shadow hover:bg-primary/85",
     destructive:
-      "bg-destructive/75 text-destructive-foreground shadow-sm hover:bg-destructive",
+      "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/85",
     outline:
       "border rounded border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-    accent: "bg-accent/80 text-accent-foreground shadow-sm hover:bg-accent",
+    accent: "bg-accent text-accent-foreground shadow-sm hover:bg-accent/85",
     ghost: "rounded hover:bg-accent/80 hover:text-accent-foreground",
-    link: "text-primary/75 hover:text-primary underline-offset-4 hover:underline",
+    link: "text-primary hover:text-primary/85 underline-offset-4 hover:underline",
   },
   size: {
     default: "h-9 px-4 py-2",
