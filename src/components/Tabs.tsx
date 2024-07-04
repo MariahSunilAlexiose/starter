@@ -2,12 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import { dark, light } from "@/context";
-import { MoonIcon, SunIcon } from "@/icons";
-import { useTheme } from "@/providers";
 import { Accordion, Cards, RadioGroup } from "@/sections";
 
-import { Alert, Combobox, Dialog, Switch, TextArea } from ".";
+import { Alert, Combobox, Dialog, TextArea } from ".";
 import Skeleton from "./Skeleton";
 
 type TabProps = {
@@ -32,10 +29,6 @@ const TabContent = ({ children }: { children: React.ReactNode }) => {
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState<string>("cards");
   const [loading, setLoading] = useState(true);
-  const { theme, setTheme } = useTheme();
-  const toggleTheme = () => {
-    setTheme(theme === dark ? light : dark);
-  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -51,7 +44,7 @@ const Tabs = () => {
           <Skeleton className="h-9 w-24 rounded-full p-1" />
         </div>
       ) : (
-        <div className="flex justify-between pt-20">
+        <div className="pt-20">
           <div className="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground">
             <TabTrigger
               label="Cards"
@@ -64,12 +57,6 @@ const Tabs = () => {
               setActiveTab={setActiveTab}
             />
           </div>
-          <Switch
-            clickFn={toggleTheme}
-            expr={theme === dark}
-            img1={SunIcon}
-            img2={MoonIcon}
-          />
         </div>
       )}
       {loading ? (

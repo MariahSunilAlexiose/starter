@@ -33,7 +33,7 @@ export type ButtonProps = {
 };
 /* eslint-enable */
 
-export type ProductsProps = {
+export type NavMenuProps = {
   name: string;
   description: string;
   href: string;

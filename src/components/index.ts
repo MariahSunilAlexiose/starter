@@ -7,6 +7,7 @@ import Card from "./Card";
 import Checkbox from "./Checkbox";
 import Combobox from "./Combobox";
 import Dialog from "./Dialog";
+import Header from "./Header";
 import Input from "./Input";
 import Label from "./Label";
 import Pagination from "./Pagination";
@@ -17,6 +18,7 @@ import Tabs from "./Tabs";
 import TextArea from "./TextArea";
 
 export {
+  Header,
   Tabs,
   Combobox,
   Pagination,
