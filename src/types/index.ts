@@ -1,4 +1,4 @@
-export type Recipe = {
+export type RecipeProps = {
   id: string;
   title: string;
   image: string;
@@ -7,7 +7,7 @@ export type Recipe = {
   vegan: boolean;
 };
 
-export type Radio = {
+export type RadioProps = {
   title: string;
   value: string;
 };
@@ -32,3 +32,16 @@ export type ButtonProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 /* eslint-enable */
+
+export type ProductsProps = {
+  name: string;
+  description: string;
+  href: string;
+  icon: string;
+};
+
+export type CallsToActionProps = {
+  name: string;
+  href: string;
+  icon: string;
+};

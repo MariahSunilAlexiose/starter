@@ -1,14 +1,14 @@
-import moon from "./moon.svg"
-import sun from "./sun.svg"
-import ChevronDown from './ChevronDown'
-import terminal from './terminal.svg'
-import exclamationCircle from './exclamation-circle.svg'
-import close from './close.svg'
-import ellipsisHorizontal from './ellipsis-horizontal.svg'
-import chevronRight from './chevron-right.svg'
-import chevronLeft from './chevron-left.svg'
-import chevronUpDown from './chevron-up-down.svg'
-import check from './check.svg'
-import magnifyingGlass from './magnifying-glass.svg'
+import MoonIcon from "./moon.svg"
+import SunIcon from "./sun.svg"
+import ChevronDownIcon from './chevron-down.svg'
+import TerminalIcon from './terminal.svg'
+import ExclamationCircleIcon from './exclamation-circle.svg'
+import XMarkIcon from './x-mark.svg'
+import EllipsisHorizontalIcon from './ellipsis-horizontal.svg'
+import ChevronRightIcon from './chevron-right.svg'
+import ChevronLeftIcon from './chevron-left.svg'
+import ChevronUpDownIcon from './chevron-up-down.svg'
+import CheckIcon from './check.svg'
+import MagnifyingGlassIcon from './magnifying-glass.svg'
 
-export { magnifyingGlass, check, sun, moon, ChevronDown, terminal, exclamationCircle, close, ellipsisHorizontal, chevronRight, chevronLeft, chevronUpDown }
+export { MagnifyingGlassIcon, CheckIcon, SunIcon, MoonIcon, ChevronDownIcon, TerminalIcon, ExclamationCircleIcon, XMarkIcon, EllipsisHorizontalIcon, ChevronRightIcon, ChevronLeftIcon, ChevronUpDownIcon }

@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 
-import { ChevronDown } from "@/icons";
+import Image from "next/image";
+
+import { ChevronDownIcon } from "@/icons";
 
 import { Separator } from ".";
 
@@ -20,7 +22,9 @@ const AccordionItem = ({ trigger, content }: Props) => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <p className={`${isOpen ? "font-bold" : ""}`}>{trigger}</p>
-        <ChevronDown
+        <Image
+          src={ChevronDownIcon}
+          alt="Chevron Down Icon"
           className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         />
       </div>

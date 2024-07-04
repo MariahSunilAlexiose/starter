@@ -6,7 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ButtonVariants } from "@/constants";
-import { chevronLeft, chevronRight, ellipsisHorizontal } from "@/icons";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  EllipsisHorizontalIcon,
+} from "@/icons";
 import { ButtonProps } from "@/types";
 
 /* eslint-disable */
@@ -49,7 +53,7 @@ const PaginationEllipsis = ({ ...props }: React.ComponentProps<"span">) => (
     {...props}
   >
     <Image
-      src={ellipsisHorizontal}
+      src={EllipsisHorizontalIcon}
       alt="Ellipsis Horizontal Icon"
       className="h-4 w-4"
     />
@@ -146,7 +150,7 @@ const Pagination = ({
             onClick={handlePrevPage}
           >
             <Image
-              src={chevronLeft}
+              src={ChevronLeftIcon}
               alt="Chevron Left Icon"
               className="h-4 w-4 translate-y-1"
             />
@@ -164,7 +168,7 @@ const Pagination = ({
           >
             <span>Next</span>
             <Image
-              src={chevronRight}
+              src={ChevronRightIcon}
               alt="Chevron Right Icon"
               className="h-4 w-4 translate-y-1"
             />

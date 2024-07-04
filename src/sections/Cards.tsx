@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 
 import { Card, Pagination } from "@/components";
 import { fetchData } from "@/scripts/useFetchData";
-import { Recipe } from "@/types";
+import { RecipeProps } from "@/types";
 
 function Cards() {
   const [isClient, setIsClient] = useState(false);
-  const [items, setItems] = useState<Recipe[]>([]);
+  const [items, setItems] = useState<RecipeProps[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [itemsPerPage] = useState<number>(3);
   const lastItemIndex = currentPage * itemsPerPage;
@@ -17,7 +17,7 @@ function Cards() {
   useEffect(() => {
     setIsClient(true);
     const fetchOptions = async () => {
-      const newItem = await fetchData<Recipe[]>("recipes");
+      const newItem = await fetchData<RecipeProps[]>("recipes");
       setItems(newItem);
     };
     fetchOptions();

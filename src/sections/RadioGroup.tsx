@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 
 import { RadioInput } from "@/components";
 import { fetchData } from "@/scripts/useFetchData";
-import { Radio } from "@/types";
+import { RadioProps } from "@/types";
 
 const RadioGroup = () => {
   const [selectedValue, setSelectedValue] = useState<string>("");
-  const [options, setOptions] = useState<Radio[]>([]);
+  const [options, setOptions] = useState<RadioProps[]>([]);
   useEffect(() => {
     const fetchOptions = async () => {
-      const newOption = await fetchData<Radio[]>("radio_options");
+      const newOption = await fetchData<RadioProps[]>("radio_options");
       setOptions(newOption);
     };
     fetchOptions();

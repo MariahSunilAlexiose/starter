@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { dark, light } from "@/context";
-import { moon, sun } from "@/icons";
+import { MoonIcon, SunIcon } from "@/icons";
 import { useTheme } from "@/providers";
 import { Accordion, Cards, RadioGroup } from "@/sections";
 
@@ -67,8 +67,8 @@ const Tabs = () => {
           <Switch
             clickFn={toggleTheme}
             expr={theme === dark}
-            img1={sun}
-            img2={moon}
+            img1={SunIcon}
+            img2={MoonIcon}
           />
         </div>
       )}

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import Image from "next/image";
 
-import { check, chevronUpDown, magnifyingGlass } from "@/icons";
+import { CheckIcon, ChevronUpDownIcon, MagnifyingGlassIcon } from "@/icons";
 import { fetchData } from "@/scripts/useFetchData";
 import { SelectProps } from "@/types";
 
@@ -32,7 +32,7 @@ const Combobox = () => {
         >
           {value}
           <Image
-            src={chevronUpDown}
+            src={ChevronUpDownIcon}
             alt="Chevron Up Down Icon"
             className="ml-2 h-4 w-4 shrink-0 opacity-50"
           />
@@ -43,7 +43,7 @@ const Combobox = () => {
           <div className="flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground">
             <div className="flex items-center border-b px-3">
               <Image
-                src={magnifyingGlass}
+                src={MagnifyingGlassIcon}
                 alt="Magnifying Glass Icon"
                 className="mr-2 h-4 w-4 shrink-0 opacity-50"
               />
@@ -78,7 +78,7 @@ const Combobox = () => {
                           }}
                         >
                           <Image
-                            src={check}
+                            src={CheckIcon}
                             alt="Check Icon"
                             className={`${value === option.title ? "opacity-100" : "opacity-0"} mr-2 h-4 w-4`}
                           />
