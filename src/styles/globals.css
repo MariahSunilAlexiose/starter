@@ -76,7 +76,7 @@
 @layer utilities {
   main,
   nav {
-    @apply mx-auto my-12 max-w-6xl;
+    @apply mx-auto mb-6 mt-12 max-w-6xl lg:mt-12;
   }
   h1 {
     @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
@@ -101,5 +101,9 @@
   }
   .muted {
     @apply text-sm text-muted-foreground;
+  }
+  img {
+    width: 100%;
+    height: 100%;
   }
 }

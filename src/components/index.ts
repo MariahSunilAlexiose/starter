@@ -2,6 +2,7 @@ import AccordionItem from "./AccordionItem";
 import Alert from "./Alert";
 import Avatar from "./Avatar";
 import Badge from "./Badge";
+import Banner from "./Banner";
 import Button from "./Button";
 import Card from "./Card";
 import Checkbox from "./Checkbox";
@@ -18,6 +19,7 @@ import Tabs from "./Tabs";
 import TextArea from "./TextArea";
 
 export {
+  Banner,
   Header,
   Tabs,
   Combobox,
