@@ -69,7 +69,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply relative inline-block min-h-screen bg-background text-foreground;
   }
 }
 
@@ -91,7 +91,7 @@
     @apply scroll-m-20 text-xl font-semibold tracking-tight;
   }
   p {
-    @apply leading-7 [&:not(:first-child)]:mt-2;
+    @apply leading-7;
   }
   .large {
     @apply text-lg font-semibold;

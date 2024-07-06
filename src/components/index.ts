@@ -8,6 +8,7 @@ import Card from "./Card";
 import Checkbox from "./Checkbox";
 import Combobox from "./Combobox";
 import Dialog from "./Dialog";
+import Footer from "./Footer";
 import Header from "./Header";
 import Input from "./Input";
 import Label from "./Label";
@@ -19,6 +20,7 @@ import Tabs from "./Tabs";
 import TextArea from "./TextArea";
 
 export {
+  Footer,
   Banner,
   Header,
   Tabs,

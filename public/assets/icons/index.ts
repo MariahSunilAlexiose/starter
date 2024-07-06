@@ -11,5 +11,6 @@ import ChevronUpDownIcon from './chevron-up-down.svg'
 import CheckIcon from './check.svg'
 import MagnifyingGlassIcon from './magnifying-glass.svg'
 import Bars3Icon from './bars3.svg'
+import CopyrightIcon from './copyright-sign.svg'
 
-export { Bars3Icon, MagnifyingGlassIcon, CheckIcon, SunIcon, MoonIcon, ChevronDownIcon, TerminalIcon, ExclamationCircleIcon, XMarkIcon, EllipsisHorizontalIcon, ChevronRightIcon, ChevronLeftIcon, ChevronUpDownIcon }
+export { CopyrightIcon, Bars3Icon, MagnifyingGlassIcon, CheckIcon, SunIcon, MoonIcon, ChevronDownIcon, TerminalIcon, ExclamationCircleIcon, XMarkIcon, EllipsisHorizontalIcon, ChevronRightIcon, ChevronLeftIcon, ChevronUpDownIcon }

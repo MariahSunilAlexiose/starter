@@ -45,3 +45,16 @@ export type CallsToActionProps = {
   href: string;
   icon: string;
 };
+
+export type FooterProps = {
+  title: string;
+  links: {
+    name: string;
+    href: string;
+  }[];
+};
+
+export type SocialMediaProps = {
+  image: string;
+  alt: string;
+};

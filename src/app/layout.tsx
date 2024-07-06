@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 
 import "../styles/globals.css";
 
-import { Banner, Header } from "@/components";
+import { Banner, Footer, Header } from "@/components";
 import { ThemeProvider } from "@/providers";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -35,7 +35,8 @@ export default function RootLayout({
             description="Join us in Denver from June 7 – 9 to see what’s coming next."
             callToActionText="Register Now"
           />
-          {children}
+          <div className="flex min-h-screen flex-col">{children}</div>
+          <Footer />
         </body>
       </html>
     </ThemeProvider>
