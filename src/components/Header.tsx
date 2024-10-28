@@ -217,7 +217,7 @@ const Header = () => {
                           {item.name}
                           <span className="absolute inset-0" />
                         </a>
-                        <p className="mt-1 text-foreground/80">
+                        <p className="text-foreground/80 mt-1">
                           {item.description}
                         </p>
                       </div>
@@ -229,7 +229,7 @@ const Header = () => {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-accent-foreground hover:bg-muted-foreground/20"
+                      className="hover:bg-muted-foreground/20 flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-accent-foreground"
                     >
                       <Image
                         src={`/assets/icons/${item.icon}`}

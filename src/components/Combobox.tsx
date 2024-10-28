@@ -71,7 +71,7 @@ const Combobox = () => {
                       .map((option) => (
                         <div
                           key={option.value}
-                          className={`${value === option.title ? "bg-accent text-accent-foreground" : ""} relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent/40 disabled:pointer-events-none disabled:opacity-50`}
+                          className={`${value === option.title ? "bg-accent text-accent-foreground" : ""} hover:bg-accent/40 relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none disabled:pointer-events-none disabled:opacity-50`}
                           onClick={() => {
                             setValue(option.title);
                             setOpen(false);

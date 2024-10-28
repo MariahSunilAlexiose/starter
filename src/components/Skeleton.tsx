@@ -5,7 +5,7 @@ type Props = {
 const Skeleton = ({ className, ...props }: Props) => {
   return (
     <div
-      className={`${className} animate-pulse rounded-md bg-primary/10`}
+      className={`${className} bg-primary/10 animate-pulse rounded-md`}
       {...props}
     />
   );

@@ -7,7 +7,7 @@ type Props = {
 
 const Avatar = ({ image, title }: Props) => {
   return (
-    <div className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
+    <div className="flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
       {image ? (
         <Image
           src={image}
