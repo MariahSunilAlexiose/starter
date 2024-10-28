@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./fonts.css";
+
 @layer base {
   :root,
   :root[data-theme="light"] {
@@ -74,33 +76,46 @@
 }
 
 @layer utilities {
-  main,
+  .text-sf_text {
+    font-family: var(--font-sf_text), sans-serif;
+  }
+  .text-sf_display {
+    font-family: var(--font-sf_display), sans-serif;
+  }
+
   nav {
     @apply mx-auto mb-6 mt-12 max-w-6xl lg:mt-12;
   }
   h1 {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+    @apply text-sf_display scroll-m-20 text-3xl tracking-tight lg:text-5xl;
   }
+
   h2 {
-    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
+    @apply text-sf_display scroll-m-20 border-b pb-2 text-2xl tracking-tight first:mt-0;
   }
+
   h3 {
-    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+    @apply text-sf_display scroll-m-20 text-xl tracking-tight;
   }
+
   h4 {
-    @apply scroll-m-20 text-xl font-semibold tracking-tight;
+    @apply text-sf_display scroll-m-20 text-lg tracking-tight;
   }
+
   p {
-    @apply leading-7;
+    @apply text-sf_text text-base leading-7 [&:not(:first-child)]:mt-6;
   }
+
   .large {
-    @apply text-lg font-semibold;
+    @apply text-sf_text text-lg font-semibold;
   }
+
   .small {
-    @apply text-sm font-medium leading-none;
+    @apply text-sf_text text-sm font-medium leading-none;
   }
+
   .muted {
-    @apply text-sm text-muted-foreground;
+    @apply text-sf_text text-sm text-muted-foreground;
   }
   img {
     width: 100%;

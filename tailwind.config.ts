@@ -59,6 +59,10 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
       },
+      fontFamily: {
+        sf_display: ['SFDisplay', 'sans-serif'],
+        sf_text: ['SFText', 'sans-serif'],
+      },
     },
   },
   plugins: [],

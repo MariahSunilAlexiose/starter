@@ -17,3 +17,4 @@ yarn.lock
 /tailwind.config.ts
 /tsconfig.json
 /tsconfig.tsbuildinfo
+/src/fonts
