@@ -13,6 +13,7 @@
     ".next/*",
     ".vscode/*",
     "node_modules/*",
+    "src/fonts/*",
     "public/*",
     "next-env.d.ts",
     "next.config.ts",
