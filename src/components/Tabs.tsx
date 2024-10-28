@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { Accordion, Cards, RadioGroup } from "@/sections";
+import { Accordion, Cards, RadioGroup } from "@/containers";
 
 import { Alert, Combobox, Dialog, TextArea } from ".";
 import Skeleton from "./Skeleton";
@@ -22,10 +22,6 @@ const TabTrigger = ({ label, activeTab, setActiveTab }: TabProps) => (
   </div>
 );
 
-const TabContent = ({ children }: { children: React.ReactNode }) => {
-  return <div className="mt-2 h-12">{children}</div>;
-};
-
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState<string>("cards");
   const [loading, setLoading] = useState(true);
@@ -39,9 +35,8 @@ const Tabs = () => {
   return (
     <div>
       {loading ? (
-        <div className="flex justify-between pt-20">
+        <div className="justify-between pt-20">
           <Skeleton className="h-9 w-24 rounded p-1" />
-          <Skeleton className="h-9 w-24 rounded-full p-1" />
         </div>
       ) : (
         <div className="pt-20">
@@ -64,11 +59,11 @@ const Tabs = () => {
       ) : (
         <>
           {activeTab === "cards" ? (
-            <TabContent>
+            <div className="mt-2 h-12">
               <Cards />
-            </TabContent>
+            </div>
           ) : (
-            <TabContent>
+            <div className="mt-2 h-12">
               <div className="grid w-full grid-cols-2 grid-rows-1 items-center gap-4">
                 <Accordion />
                 <div>
@@ -87,7 +82,7 @@ const Tabs = () => {
                   </div>
                 </div>
               </div>
-            </TabContent>
+            </div>
           )}
         </>
       )}

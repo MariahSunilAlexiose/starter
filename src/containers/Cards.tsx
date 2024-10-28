@@ -26,7 +26,7 @@ function Cards() {
     <>
       {isClient ? (
         <>
-          <div className="grid grid-cols-3 gap-8">
+          <div className="flex justify-center gap-5">
             {currentItems.map((item) => (
               <Card
                 key={item.id}

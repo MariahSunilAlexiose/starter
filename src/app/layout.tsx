@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 
 import "../styles/globals.css";
 
 import { Banner, Footer, Header } from "@/components";
-import { ThemeProvider } from "@/providers";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Toasts } from "@/containers";
+import { ThemeProvider, ToastProvider } from "@/providers";
 
 export const metadata: Metadata = {
   title: "Starter Project",
@@ -27,18 +25,21 @@ export default function RootLayout({
 }>) {
   return (
     <ThemeProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          <Header />
-          <Banner
-            title="GeneriCon 2023"
-            description="Join us in Denver from June 7 – 9 to see what’s coming next."
-            callToActionText="Register Now"
-          />
-          <div className="flex min-h-screen flex-col">{children}</div>
-          <Footer />
-        </body>
-      </html>
+      <ToastProvider>
+        <html lang="en">
+          <body>
+            <Header />
+            <Banner
+              title="GeneriCon 2023"
+              description="Join us in Denver from June 7 – 9 to see what’s coming next."
+              callToActionText="Register Now"
+            />
+            <Toasts />
+            <div className="flex min-h-screen flex-col">{children}</div>
+            <Footer />
+          </body>
+        </html>
+      </ToastProvider>
     </ThemeProvider>
   );
 }

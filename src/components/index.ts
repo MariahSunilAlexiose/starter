@@ -18,8 +18,12 @@ import Separator from "./Separator";
 import Switch from "./Switch";
 import Tabs from "./Tabs";
 import TextArea from "./TextArea";
+import Toast from "./Toast";
+import Skeleton from "./Skeleton";
 
 export {
+  Skeleton,
+  Toast,
   Footer,
   Banner,
   Header,

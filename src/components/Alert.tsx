@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ExclamationCircleIcon, TerminalIcon } from "@/icons";
+import { ExclamationTriangleIcon, TerminalIcon } from "@/icons";
 
 type Props = {
   variant?: "default" | "accent" | "destructive" | "outline";
@@ -27,13 +27,13 @@ const Alert = ({ variant = "default", title, description }: Props) => {
         <Image
           src={TerminalIcon}
           alt="Terminal Icon"
-          className="absolute left-4 top-4 text-foreground"
+          className="absolute left-4 top-4 h-6 w-6 text-foreground"
         />
       ) : (
         <Image
-          src={ExclamationCircleIcon}
+          src={ExclamationTriangleIcon}
           alt="Exclamation Icon"
-          className="absolute left-4 top-4 text-foreground"
+          className="absolute left-4 top-4 h-4 w-4 text-foreground"
         />
       )}
       <div className="pl-5">
