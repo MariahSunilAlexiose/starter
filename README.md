@@ -1,4 +1,4 @@
-It is a web development project template using TypeScript, React, Next.js, and Tailwind CSS. You're also focusing on maintaining a consistent code style and ensuring code quality with tools like ESLint and Prettier. Plus, you've got Husky and lint-staged for running checks before commits.
+It is a web development project template with custom made components using TypeScript, React, Next.js, and Tailwind CSS. You're also focusing on maintaining a consistent code style and ensuring code quality with tools like ESLint and Prettier. Plus, I have used Husky and lint-staged for running checks before commits.
 
 ## Dependencies Present
 @ianvs/prettier-plugin-sort-imports: A Prettier plugin to sort import statements according to custom rules.
