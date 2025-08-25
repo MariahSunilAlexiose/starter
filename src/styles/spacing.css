@@ -1,24 +1,23 @@
-@tailwind base;
+@import "tailwindcss/theme" layer(theme);
 
-@layer base {
-  :root {
-    --spacing-1: 4px;
-    --spacing-2: 8px;
-    --spacing-3: 12px;
-    --spacing-5: 20px;
-    --spacing-8: 32px;
-    --spacing-13: 52px;
-    --spacing-21: 84px;
-    --spacing-320: 1280px;
-    --radius: 0.5rem;
+@import "tailwindcss/preflight" layer(base);
 
-    --spacing-xxs: var(--spacing-1);
-    --spacing-xs: var(--spacing-2);
-    --spacing-sm: var(--spacing-3);
-    --spacing-md: var(--spacing-5);
-    --spacing-lg: var(--spacing-8);
-    --spacing-xl: var(--spacing-13);
-    --spacing-xxl: var(--spacing-21);
-    --container-width: var(--spacing-320);
-  }
+@theme {
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-5: 20px;
+  --spacing-8: 32px;
+  --spacing-13: 52px;
+  --spacing-21: 84px;
+  --spacing-320: 1280px;
+
+  --spacing-xxs: var(--spacing-1);
+  --spacing-xs: var(--spacing-2);
+  --spacing-sm: var(--spacing-3);
+  --spacing-md: var(--spacing-5);
+  --spacing-lg: var(--spacing-8);
+  --spacing-xl: var(--spacing-13);
+  --spacing-xxl: var(--spacing-21);
+  --container-width: var(--spacing-320);
 }

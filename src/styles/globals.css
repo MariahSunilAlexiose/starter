@@ -1,48 +1,77 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @import "./fonts.css";
 @import "./colors.css";
 @import "./spacing.css";
 
+@theme {
+  /* Border radius tokens */
+  --radius: 12px;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Font families */
+  --font-sf-display: "SFDisplay", sans-serif;
+  --font-sf-text: "SFText", sans-serif;
+
+  /* Colors */
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-black);
+  --color-primary: var(--color-blue-60);
+  --color-primary-foreground: var(--color-blue-10);
+  --color-accent: var(--color-blue-20);
+  --color-accent-foreground: var(--color-blue-90);
+  --color-muted-foreground: var(--color-gray-20);
+  --color-destructive: var(--color-red-10);
+  --color-destructive-foreground: var(--color-blue-10);
+  --color-border: var(--color-blue-30);
+  --color-ring: var(--color-blue-60);
+}
+
 @layer base {
   * {
-    @apply m-0 scroll-smooth border-border p-0;
-  }
-
-  body {
-    @apply bg-background text-foreground;
+    @apply border-border m-0 scroll-smooth p-0;
   }
 }
 
 @layer utilities {
-  main,
-  nav {
-    @apply mx-auto my-12 max-w-6xl;
+  main {
+    @apply font-sf-text m-6 flex flex-col;
   }
+
   h1 {
     @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
   }
+
   h2 {
     @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
   }
+
   h3 {
     @apply scroll-m-20 text-2xl font-semibold tracking-tight;
   }
+
   h4 {
     @apply scroll-m-20 text-xl font-semibold tracking-tight;
   }
+
   p {
-    @apply leading-7 [&:not(:first-child)]:mt-6;
+    @apply leading-7;
   }
+
   .large {
     @apply text-lg font-semibold;
   }
+
   .small {
-    @apply text-sm font-medium leading-none;
+    @apply text-sm leading-none font-medium;
   }
+
   .muted {
-    @apply text-sm text-muted-foreground;
+    @apply text-muted-foreground text-sm;
   }
 }

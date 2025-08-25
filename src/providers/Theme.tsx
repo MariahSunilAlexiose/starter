@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useContext, useEffect, useState } from "react";
 
 import { dark, light, Theme, ThemeContext } from "@/context";
 
@@ -8,13 +8,14 @@ type ThemeProviderProps = {
   children: ReactNode;
 };
 
-export function useTheme() {
+export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("theme") === "dark" ? dark : light;
     }
     return light;
   });
+
   useEffect(() => {
     const setSystemTheme = () => {
       const systemTheme =
@@ -22,18 +23,15 @@ export function useTheme() {
         window.matchMedia("(prefers-color-scheme: dark)").matches
           ? dark
           : light;
-      setTheme(systemTheme === dark ? dark : light);
+      setTheme(systemTheme);
     };
 
     setSystemTheme();
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", setSystemTheme);
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", setSystemTheme);
 
     return () => {
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .removeEventListener("change", setSystemTheme);
+      mediaQuery.removeEventListener("change", setSystemTheme);
     };
   }, []);
 
@@ -49,14 +47,17 @@ export function useTheme() {
     }
   }, [theme]);
 
-  return { theme, setTheme };
-}
-
-export function ThemeProvider({ children }: ThemeProviderProps) {
-  const { theme, setTheme } = useTheme();
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
+}
+
+export function useTheme() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return context;
 }
