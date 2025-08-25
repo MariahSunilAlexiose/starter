@@ -1,11 +1,11 @@
-import Image, { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image"
 
 type Props = {
-  clickFn: () => void;
-  expr: boolean;
-  img1?: StaticImageData;
-  img2?: StaticImageData;
-};
+  clickFn: () => void
+  expr: boolean
+  img1?: StaticImageData
+  img2?: StaticImageData
+}
 
 const Switch = ({ clickFn, expr, img1, img2 }: Props) => {
   return (
@@ -28,7 +28,7 @@ const Switch = ({ clickFn, expr, img1, img2 }: Props) => {
         </div>
       )}
     </button>
-  );
-};
+  )
+}
 
-export default Switch;
+export default Switch

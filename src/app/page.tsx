@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { Switch } from "@/components";
-import { dark, light } from "@/context";
-import { moon, sun } from "@/icons";
-import { useTheme } from "@/providers";
+import { Switch } from "@/components"
+import { dark, light } from "@/context"
+import { moon, sun } from "@/icons"
+import { useTheme } from "@/providers"
 
 export default function Home() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme()
   const toggleTheme = () => {
-    setTheme(theme === dark ? light : dark);
-  };
+    setTheme(theme === dark ? light : dark)
+  }
   // Checks if fonts are loaded
   // useEffect(() => {
   //   document.fonts
@@ -40,5 +40,5 @@ export default function Home() {
         img2={moon}
       />
     </main>
-  );
+  )
 }

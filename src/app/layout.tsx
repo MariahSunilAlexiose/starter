@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next"
 
-import "../styles/globals.css";
+import "../styles/globals.css"
 
-import { ThemeProvider } from "@/providers";
+import { ThemeProvider } from "@/providers"
 
 export const metadata: Metadata = {
   title: "Starter Project",
@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     // shortcut: [""],
   },
   manifest: "/site.webmanifest",
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <ThemeProvider>
@@ -32,5 +32,5 @@ export default function RootLayout({
         </body>
       </html>
     </ThemeProvider>
-  );
+  )
 }
