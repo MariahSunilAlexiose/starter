@@ -60,7 +60,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/scripts/killPort.js"
   ],
   "exclude": [
     "node_modules"
