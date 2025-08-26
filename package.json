@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"node src/scripts/killPort.js && yarn json-server --watch ./_data/db.json --port 4000\" \"next dev\"",
+    "dev": "concurrently \"node src/scripts/killPort.js && yarn json-server --watch ./_data/db.json --port 4000\" \"next dev --turbopack\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src && eslint . --ext ts --ext tsx --ext js --config .eslintrc.json",
@@ -21,18 +21,18 @@
     ]
   },
   "dependencies": {
-    "next": "^14.2.4",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "15.5.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "19.1.11",
+    "@types/react-dom": "19.1.7",
     "concurrently": "^8.2.2",
     "eslint": "8.57.0",
-    "eslint-config-next": "14.2.4",
+    "eslint-config-next": "15.5.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.11",
     "json-server": "^1.0.0-beta.1",
@@ -47,5 +47,9 @@
     "plugins": [
       "prettier-plugin-tailwindcss"
     ]
+  },
+  "resolutions": {
+    "@types/react": "19.1.11",
+    "@types/react-dom": "19.1.7"
   }
 }
