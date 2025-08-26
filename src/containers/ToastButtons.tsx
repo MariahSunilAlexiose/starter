@@ -1,17 +1,18 @@
-"use client";
+"use client"
 
-import { Button, Skeleton } from "@/components";
-import { useToast } from "@/providers";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
+
+import { Button, Skeleton } from "@/components"
+import { useToast } from "@/providers"
 
 const ToastButtons = () => {
-  const { addToast } = useToast();
-  const [loading, setLoading] = useState(true);
+  const { addToast } = useToast()
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
+      setLoading(false)
+    }, 2000)
+  }, [])
   return (
     <>
       {loading ? (
@@ -35,7 +36,7 @@ const ToastButtons = () => {
               addToast(
                 "info",
                 "Information",
-                "You have logged in successfully!",
+                "You have logged in successfully!"
               )
             }
           >
@@ -52,7 +53,7 @@ const ToastButtons = () => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default ToastButtons;
+export default ToastButtons

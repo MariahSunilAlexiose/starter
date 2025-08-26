@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import { Label } from ".";
+import { Label } from "."
 
 type Props = {
-  id: string;
-  label?: string;
-};
+  id: string
+  label?: string
+}
 
 const Checkbox = ({ id, label }: Props) => {
-  const [checked, setChecked] = useState<boolean>(false);
+  const [checked, setChecked] = useState<boolean>(false)
   return (
     <div className="flex items-center space-x-3" id={id}>
       <input
@@ -21,7 +21,7 @@ const Checkbox = ({ id, label }: Props) => {
       />
       {label && <Label htmlFor={label}>{label}</Label>}
     </div>
-  );
-};
+  )
+}
 
-export default Checkbox;
+export default Checkbox

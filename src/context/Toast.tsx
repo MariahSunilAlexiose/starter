@@ -1,7 +1,7 @@
-import { createContext } from "react";
+import { createContext } from "react"
 
-import { ToastContextType } from "@/types";
+import { ToastContextType } from "@/types"
 
 export const ToastContext = createContext<ToastContextType | undefined>(
-  undefined,
-);
+  undefined
+)

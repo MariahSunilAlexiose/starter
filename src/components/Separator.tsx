@@ -1,14 +1,14 @@
 type Props = {
-  orientation?: "horizontal" | "vertical";
-  className?: string;
-};
+  orientation?: "horizontal" | "vertical"
+  className?: string
+}
 
 const Separator = ({ orientation = "horizontal", className }: Props) => {
   return (
     <div
-      className={`${orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]"} ${className} shrink-0 bg-border`}
+      className={`${orientation === "horizontal" ? "h-px w-full" : "h-full w-px"} ${className} bg-border shrink-0`}
     ></div>
-  );
-};
+  )
+}
 
-export default Separator;
+export default Separator

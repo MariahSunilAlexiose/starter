@@ -1,14 +1,14 @@
 /* eslint-disable */
-"use client";
+"use client"
 
-import { Label } from ".";
+import { Label } from "."
 
 type Props = {
-  title: string;
-  value: string;
-  selectedValue: string;
-  onValueChange: (value: string) => void;
-};
+  title: string
+  value: string
+  selectedValue: string
+  onValueChange: (value: string) => void
+}
 
 const RadioInput = ({ title, value, selectedValue, onValueChange }: Props) => {
   return (
@@ -22,7 +22,7 @@ const RadioInput = ({ title, value, selectedValue, onValueChange }: Props) => {
       />
       <Label htmlFor={title}>{title}</Label>
     </div>
-  );
-};
+  )
+}
 
-export default RadioInput;
+export default RadioInput

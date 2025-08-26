@@ -1,80 +1,80 @@
-@tailwind base;
+@import "tailwindcss";
 
 @layer base {
   :root {
-    --red-10: #ef4444;
-    --red-90: #7f1d1d;
-    --blue-10: #f8fafc;
-    --blue-20: #f1f5f9;
-    --blue-30: #e2e8f0;
-    --blue-40: #8fb5f3;
-    --blue-50: #3b82f6;
-    --blue-60: #2563eb;
-    --blue-70: #1d4ed8;
-    --blue-80: #1e293b;
-    --blue-90: #0f172a;
-    --gray-10: #94a3b8;
-    --gray-20: #64748b;
-    --white: #ffffff;
-    --black: #020817;
+    --color-red-10: #ef4444;
+    --color-red-90: #7f1d1d;
+    --color-blue-10: #f8fafc;
+    --color-blue-20: #f1f5f9;
+    --color-blue-30: #e2e8f0;
+    --color-blue-40: #8fb5f3;
+    --color-blue-50: #3b82f6;
+    --color-blue-60: #2563eb;
+    --color-blue-70: #1d4ed8;
+    --color-blue-80: #1e293b;
+    --color-blue-90: #0f172a;
+    --color-gray-10: #94a3b8;
+    --color-gray-20: #64748b;
+    --color-white: #ffffff;
+    --color-black: #020817;
   }
 
   :root[data-theme="light"] {
-    --background: var(--white);
-    --foreground: var(--black);
+    --color-background: var(--color-white);
+    --color-foreground: var(--color-black);
 
-    --primary: var(--blue-60);
-    --primary-foreground: var(--blue-10);
+    --color-primary: var(--color-blue-60);
+    --color-primary-foreground: var(--color-blue-10);
 
-    --accent: var(--blue-20);
-    --accent-foreground: var(--blue-90);
+    --color-accent: var(--color-blue-20);
+    --color-accent-foreground: var(--color-blue-90);
 
-    --muted-foreground: var(--gray-20);
+    --color-muted-foreground: var(--color-gray-20);
 
-    --destructive: var(--red-10);
-    --destructive-foreground: var(--blue-10);
+    --color-destructive: var(--color-red-10);
+    --color-destructive-foreground: var(--color-blue-10);
 
-    --border: var(--blue-30);
-    --ring: var(--blue-60);
+    --color-border: var(--color-blue-30);
+    --color-ring: var(--color-blue-60);
   }
 
   :root[data-theme="dark"] {
-    --background: var(--black);
-    --foreground: var(--blue-10);
+    --color-background: var(--color-black);
+    --color-foreground: var(--color-blue-10);
 
-    --primary: var(--blue-50);
-    --primary-foreground: var(--blue-90);
+    --color-primary: var(--color-blue-50);
+    --color-primary-foreground: var(--color-blue-90);
 
-    --accent: var(--blue-80);
-    --accent-foreground: var(--blue-10);
+    --color-accent: var(--color-blue-80);
+    --color-accent-foreground: var(--color-blue-10);
 
-    --muted-foreground: var(--gray-10);
+    --color-muted-foreground: var(--color-gray-10);
 
-    --destructive: var(--red-90);
-    --destructive-foreground: var(--blue-10);
+    --color-destructive: var(--color-red-90);
+    --color-destructive-foreground: var(--color-blue-10);
 
-    --border: var(--blue-80);
-    --ring: var(--blue-70);
+    --color-border: var(--color-blue-80);
+    --color-ring: var(--color-blue-70);
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --background: var(--black);
-      --foreground: var(--blue-10);
+      --color-background: var(--color-black);
+      --color-foreground: var(--color-blue-10);
 
-      --primary: var(--blue-50);
-      --primary-foreground: var(--blue-90);
+      --color-primary: var(--color-blue-50);
+      --color-primary-foreground: var(--color-blue-90);
 
-      --accent: var(--blue-80);
-      --accent-foreground: var(--blue-10);
+      --color-accent: var(--color-blue-80);
+      --color-accent-foreground: var(--color-blue-10);
 
-      --muted-foreground: var(--gray-10);
+      --color-muted-foreground: var(--color-gray-10);
 
-      --destructive: var(--red-90);
-      --destructive-foreground: var(--blue-10);
+      --color-destructive: var(--color-red-90);
+      --color-destructive-foreground: var(--color-blue-10);
 
-      --border: var(--blue-80);
-      --ring: var(--blue-70);
+      --color-border: var(--color-blue-80);
+      --color-ring: var(--color-blue-70);
     }
   }
 }

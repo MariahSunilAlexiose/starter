@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import { Toast } from "@/components";
-import { useToast } from "@/providers";
+import { Toast } from "@/components"
+import { useToast } from "@/providers"
 
 const Toasts = () => {
-  const { toasts, removeToast } = useToast();
+  const { toasts, removeToast } = useToast()
 
   return (
-    <div className="z-1000 absolute right-0 m-4 p-4">
+    <div className="absolute right-0 z-1000 m-4 p-4">
       {toasts.map((toast) => (
         <Toast
           key={toast.id}
@@ -19,7 +19,7 @@ const Toasts = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Toasts;
+export default Toasts

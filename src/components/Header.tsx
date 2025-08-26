@@ -1,36 +1,36 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
-import { dark, light } from "@/context";
+import { dark, light } from "@/context"
 import {
   Bars3Icon,
   ChevronDownIcon,
   MoonIcon,
   SunIcon,
   XMarkIcon,
-} from "@/icons";
-import { useTheme } from "@/providers";
-import { fetchData } from "@/scripts/useFetchData";
-import { CallsToActionProps, NavMenuProps } from "@/types";
+} from "@/icons"
+import { useTheme } from "@/providers"
+import { fetchData } from "@/scripts/useFetchData"
+import { CallsToActionProps, NavMenuProps } from "@/types"
 
-import { Button, Switch } from ".";
+import { Button, Switch } from "."
 
 /* eslint-disable */
 type MobileHeaderProps = {
   items: {
-    name: string;
-    description?: string;
-    href: string;
-    icon: string;
-  }[];
-  setMobileMenu: (mobileMenu: boolean) => void;
-  mobilePopover: boolean;
-  setMobilePopover: (mobilePopover: boolean) => void;
-};
+    name: string
+    description?: string
+    href: string
+    icon: string
+  }[]
+  setMobileMenu: (mobileMenu: boolean) => void
+  mobilePopover: boolean
+  setMobilePopover: (mobilePopover: boolean) => void
+}
 /* eslint-enable */
 
 const MobileHeader = ({
@@ -41,7 +41,7 @@ const MobileHeader = ({
 }: MobileHeaderProps) => (
   <div className="lg:hidden">
     <div className="fixed inset-0 z-10" />
-    <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+    <div className="bg-background fixed inset-y-0 right-0 z-10 w-full overflow-y-auto px-6 py-6 sm:w-[400px] sm:ring-1 sm:ring-gray-900/10">
       <div className="flex items-center justify-between">
         <a href="#" className="-m-1.5 p-1.5">
           <span className="sr-only">Your Company</span>
@@ -62,7 +62,7 @@ const MobileHeader = ({
           <Image
             src={XMarkIcon}
             alt="Close Icon"
-            className="h-6 w-6"
+            className="h-6 w-6 cursor-pointer"
             aria-hidden="true"
           />
         </button>
@@ -72,13 +72,13 @@ const MobileHeader = ({
           <div className="-mx-3">
             <div
               onClick={() => setMobilePopover(!mobilePopover)}
-              className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-foreground hover:bg-accent"
+              className="text-foreground hover:bg-accent flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base leading-7 font-semibold"
             >
               Product
               <Image
                 src={ChevronDownIcon}
                 alt="Chevron Down Icon"
-                className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${mobilePopover ? "rotate-180" : ""}`}
+                className={`text-muted-foreground h-4 w-4 shrink-0 transition-transform duration-200 ${mobilePopover ? "rotate-180" : ""}`}
                 aria-hidden="true"
               />
             </div>
@@ -88,7 +88,7 @@ const MobileHeader = ({
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-foreground hover:bg-accent"
+                    className="text-foreground hover:bg-accent block rounded-lg py-2 pr-3 pl-6 text-sm leading-7 font-semibold"
                   >
                     {item.name}
                   </Link>
@@ -98,19 +98,19 @@ const MobileHeader = ({
           </div>
           <a
             href="#"
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-foreground hover:bg-accent"
+            className="text-foreground hover:bg-accent -mx-3 block rounded-lg px-3 py-2 text-base leading-7 font-semibold"
           >
             Features
           </a>
           <a
             href="#"
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-foreground hover:bg-accent"
+            className="text-foreground hover:bg-accent -mx-3 block rounded-lg px-3 py-2 text-base leading-7 font-semibold"
           >
             Marketplace
           </a>
           <a
             href="#"
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-foreground hover:bg-accent"
+            className="text-foreground hover:bg-accent -mx-3 block rounded-lg px-3 py-2 text-base leading-7 font-semibold"
           >
             Company
           </a>
@@ -121,33 +121,33 @@ const MobileHeader = ({
       </div>
     </div>
   </div>
-);
+)
 
 const Header = () => {
-  const [clickedPopover, setClickedPopover] = useState<boolean>(false);
-  const [mobileMenu, setMobileMenu] = useState<boolean>(false);
-  const [mobilePopover, setMobilePopover] = useState<boolean>(false);
-  const [products, setProducts] = useState<NavMenuProps[]>([]);
-  const [callsToAction, setCallsToAction] = useState<CallsToActionProps[]>([]);
-  const { theme, setTheme } = useTheme();
+  const [clickedPopover, setClickedPopover] = useState<boolean>(false)
+  const [mobileMenu, setMobileMenu] = useState<boolean>(false)
+  const [mobilePopover, setMobilePopover] = useState<boolean>(false)
+  const [products, setProducts] = useState<NavMenuProps[]>([])
+  const [callsToAction, setCallsToAction] = useState<CallsToActionProps[]>([])
+  const { theme, setTheme } = useTheme()
   const toggleTheme = () => {
-    setTheme(theme === dark ? light : dark);
-  };
+    setTheme(theme === dark ? light : dark)
+  }
   useEffect(() => {
     const fetchOptions = async () => {
-      const newProduct = await fetchData<NavMenuProps[]>("nav_menu");
-      setProducts(newProduct);
+      const newProduct = await fetchData<NavMenuProps[]>("nav_menu")
+      setProducts(newProduct)
       const newCallToAction =
-        await fetchData<CallsToActionProps[]>("callsToAction");
-      setCallsToAction(newCallToAction);
-    };
-    fetchOptions();
-  }, []);
+        await fetchData<CallsToActionProps[]>("callsToAction")
+      setCallsToAction(newCallToAction)
+    }
+    fetchOptions()
+  }, [])
 
   return (
     <header className="bg-background">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8"
+        className="mx-auto mt-12 mb-6 flex max-w-7xl items-center justify-between px-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -171,7 +171,7 @@ const Header = () => {
             <Image
               src={Bars3Icon}
               alt="Bars3 Icon"
-              className="h-6 w-6"
+              className="h-6 w-6 cursor-pointer"
               aria-hidden="true"
               onClick={() => setMobileMenu(!mobileMenu)}
             />
@@ -180,39 +180,39 @@ const Header = () => {
         <div className="hidden lg:flex lg:gap-x-12">
           <div className="relative">
             <div
-              className="flex cursor-pointer items-center gap-x-1 text-sm font-semibold leading-6 text-foreground"
+              className="text-foreground flex cursor-pointer items-center gap-x-1 text-sm leading-6 font-semibold"
               onClick={() => setClickedPopover(!clickedPopover)}
             >
               Product
               <Image
                 src={ChevronDownIcon}
                 alt="Chevron Down Icon"
-                className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${clickedPopover ? "rotate-180" : ""}`}
+                className={`text-muted-foreground h-4 w-4 shrink-0 transition-transform duration-200 ${clickedPopover ? "rotate-180" : ""}`}
                 aria-hidden="true"
               />
             </div>
             {clickedPopover && (
-              <div className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-background shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in">
+              <div className="bg-background absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl shadow-lg ring-1 ring-gray-900/5 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in">
                 <div className="p-4">
                   {products.map((item) => (
                     <div
                       key={item.name}
-                      className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-accent"
+                      className="group hover:bg-accent relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6"
                     >
-                      <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-background group-hover:bg-background">
+                      <div className="bg-background group-hover:bg-background flex h-11 w-11 flex-none items-center justify-center rounded-lg">
                         <Image
                           alt="Product Icon"
                           src={`/assets/icons/${item.icon}`}
                           width={10}
                           height={10}
-                          className="h-6 w-6 text-foreground group-hover:text-indigo-600"
+                          className="text-foreground h-6 w-6 group-hover:text-indigo-600"
                           aria-hidden="true"
                         />
                       </div>
                       <div className="flex-auto">
                         <a
                           href={item.href}
-                          className="block font-semibold text-foreground"
+                          className="text-foreground block font-semibold"
                         >
                           {item.name}
                           <span className="absolute inset-0" />
@@ -224,12 +224,12 @@ const Header = () => {
                     </div>
                   ))}
                 </div>
-                <div className="grid grid-cols-2 divide-x divide-background bg-accent">
+                <div className="divide-background bg-accent grid grid-cols-2 divide-x">
                   {callsToAction.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
-                      className="hover:bg-muted-foreground/20 flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-accent-foreground"
+                      className="hover:bg-muted-foreground/20 text-accent-foreground flex items-center justify-center gap-x-2.5 p-3 text-sm leading-6 font-semibold"
                     >
                       <Image
                         src={`/assets/icons/${item.icon}`}
@@ -248,19 +248,19 @@ const Header = () => {
           </div>
           <a
             href="#"
-            className="text-sm font-semibold leading-6 text-foreground"
+            className="text-foreground text-sm leading-6 font-semibold"
           >
             Features
           </a>
           <a
             href="#"
-            className="text-sm font-semibold leading-6 text-foreground"
+            className="text-foreground text-sm leading-6 font-semibold"
           >
             Marketplace
           </a>
           <a
             href="#"
-            className="text-sm font-semibold leading-6 text-foreground"
+            className="text-foreground text-sm leading-6 font-semibold"
           >
             Company
           </a>
@@ -286,7 +286,7 @@ const Header = () => {
         />
       )}
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

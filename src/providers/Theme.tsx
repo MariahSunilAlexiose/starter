@@ -1,62 +1,63 @@
-"use client";
+"use client"
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useContext, useEffect, useState } from "react"
 
-import { dark, light, Theme, ThemeContext } from "@/context";
+import { dark, light, Theme, ThemeContext } from "@/context"
 
 type ThemeProviderProps = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
-export function useTheme() {
+export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "dark" ? dark : light;
+      return localStorage.getItem("theme") === "dark" ? dark : light
     }
-    return light;
-  });
+    return light
+  })
+
   useEffect(() => {
     const setSystemTheme = () => {
       const systemTheme =
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches
           ? dark
-          : light;
-      setTheme(systemTheme === dark ? dark : light);
-    };
+          : light
+      setTheme(systemTheme)
+    }
 
-    setSystemTheme();
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", setSystemTheme);
+    setSystemTheme()
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    mediaQuery.addEventListener("change", setSystemTheme)
 
     return () => {
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .removeEventListener("change", setSystemTheme);
-    };
-  }, []);
+      mediaQuery.removeEventListener("change", setSystemTheme)
+    }
+  }, [])
 
   useEffect(() => {
     if (theme === dark) {
-      document.documentElement.classList.add("dark");
-      document.documentElement.setAttribute("data-theme", "dark");
-      localStorage.setItem("theme", dark);
+      document.documentElement.classList.add("dark")
+      document.documentElement.setAttribute("data-theme", "dark")
+      localStorage.setItem("theme", dark)
     } else {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.setAttribute("data-theme", "light");
-      localStorage.setItem("theme", light);
+      document.documentElement.classList.remove("dark")
+      document.documentElement.setAttribute("data-theme", "light")
+      localStorage.setItem("theme", light)
     }
-  }, [theme]);
+  }, [theme])
 
-  return { theme, setTheme };
-}
-
-export function ThemeProvider({ children }: ThemeProviderProps) {
-  const { theme, setTheme } = useTheme();
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
-  );
+  )
+}
+
+export function useTheme() {
+  const context = useContext(ThemeContext)
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider")
+  }
+  return context
 }

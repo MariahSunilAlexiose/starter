@@ -1,34 +1,34 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import Image from "next/image";
+import Image from "next/image"
 
-import { XMarkIcon } from "@/icons";
+import { XMarkIcon } from "@/icons"
 
-import { Button, Checkbox, Input, Label } from ".";
+import { Button, Checkbox, Input, Label } from "."
 
 const Dialog = () => {
-  const [clicked, setClicked] = useState<boolean>(false);
+  const [clicked, setClicked] = useState<boolean>(false)
   return (
     <div>
       <div className="justify-center" onClick={() => setClicked(true)}>
         <Button variant="outline">Edit Profile</Button>
       </div>
       {clicked && (
-        <div className="open:animate-in open:fade-in-0 open:zoom-in-95 open:slide-in-from-left-1/2 open:slide-in-from-top-[48%] fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 sm:max-w-[425px] sm:rounded-lg">
+        <div className="open:animate-in open:fade-in-0 open:zoom-in-95 open:slide-in-from-left-1/2 open:slide-in-from-top-[48%] bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg duration-200 sm:max-w-[425px] sm:rounded-lg">
           <div
-            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity open:bg-accent open:text-muted-foreground hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
+            className="ring-offset-background open:bg-accent open:text-muted-foreground focus:ring-ring absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none"
             onClick={() => setClicked(!clicked)}
           >
             <Image src={XMarkIcon} alt="Close Icon" className="h-4 w-4" />
             <span className="sr-only">Close Icon</span>
           </div>
           <div className="flex flex-col space-y-1.5 text-center sm:text-left">
-            <div className="text-lg font-semibold leading-none tracking-tight">
+            <div className="text-lg leading-none font-semibold tracking-tight">
               Edit profile
             </div>
-            <div className="text-sm text-muted-foreground">
+            <div className="text-muted-foreground text-sm">
               Make changes to your profile here. Click save when you&quot;re
               done.
             </div>
@@ -64,7 +64,7 @@ const Dialog = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Dialog;
+export default Dialog

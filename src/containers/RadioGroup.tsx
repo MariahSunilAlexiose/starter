@@ -1,21 +1,21 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
-import { RadioInput } from "@/components";
-import { fetchData } from "@/scripts/useFetchData";
-import { RadioProps } from "@/types";
+import { RadioInput } from "@/components"
+import { fetchData } from "@/scripts/useFetchData"
+import { RadioProps } from "@/types"
 
 const RadioGroup = () => {
-  const [selectedValue, setSelectedValue] = useState<string>("");
-  const [options, setOptions] = useState<RadioProps[]>([]);
+  const [selectedValue, setSelectedValue] = useState<string>("")
+  const [options, setOptions] = useState<RadioProps[]>([])
   useEffect(() => {
     const fetchOptions = async () => {
-      const newOption = await fetchData<RadioProps[]>("radio_options");
-      setOptions(newOption);
-    };
-    fetchOptions();
-  }, []);
+      const newOption = await fetchData<RadioProps[]>("radio_options")
+      setOptions(newOption)
+    }
+    fetchOptions()
+  }, [])
   return (
     <div className="grid gap-2">
       {options.map((option) => (
@@ -28,7 +28,7 @@ const RadioGroup = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default RadioGroup;
+export default RadioGroup

@@ -1,27 +1,27 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
-import Image from "next/image";
+import Image from "next/image"
 
-import { CheckIcon, ChevronUpDownIcon, MagnifyingGlassIcon } from "@/icons";
-import { fetchData } from "@/scripts/useFetchData";
-import { SelectProps } from "@/types";
+import { CheckIcon, ChevronUpDownIcon, MagnifyingGlassIcon } from "@/icons"
+import { fetchData } from "@/scripts/useFetchData"
+import { SelectProps } from "@/types"
 
-import { Button } from ".";
+import { Button } from "."
 
 const Combobox = () => {
-  const [open, setOpen] = useState<boolean>(false);
-  const [options, setOptions] = useState<SelectProps[]>([]);
-  const [value, setValue] = useState<string>("Select option...");
-  const [searchTerm, setSearchTerm] = useState("");
+  const [open, setOpen] = useState<boolean>(false)
+  const [options, setOptions] = useState<SelectProps[]>([])
+  const [value, setValue] = useState<string>("Select option...")
+  const [searchTerm, setSearchTerm] = useState("")
   useEffect(() => {
     const fetchOptions = async () => {
-      const newOptions = await fetchData<SelectProps[]>("select_options");
-      setOptions(newOptions);
-    };
-    fetchOptions();
-  }, []);
+      const newOptions = await fetchData<SelectProps[]>("select_options")
+      setOptions(newOptions)
+    }
+    fetchOptions()
+  }, [])
   return (
     <div onClick={() => setOpen(!open)}>
       <div>
@@ -39,8 +39,8 @@ const Combobox = () => {
         </Button>
       </div>
       {open && (
-        <div className="z-50 w-[200px] rounded-md border bg-popover p-0 text-popover-foreground shadow-md outline-none">
-          <div className="flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground">
+        <div className="bg-popover text-popover-foreground z-50 w-[200px] rounded-md border p-0 shadow-md outline-hidden">
+          <div className="bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md">
             <div className="flex items-center border-b px-3">
               <Image
                 src={MagnifyingGlassIcon}
@@ -49,32 +49,32 @@ const Combobox = () => {
               />
               <input
                 onClick={(e) => e.stopPropagation()}
-                className="flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                className="placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50"
                 placeholder="Search option..."
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
-            <div className="max-h-[300px] overflow-y-auto overflow-x-hidden">
+            <div className="max-h-[300px] overflow-x-hidden overflow-y-auto">
               {options && (
-                <div className="overflow-hidden p-1 text-foreground">
+                <div className="text-foreground overflow-hidden p-1">
                   {options.filter((option) =>
                     option.title
                       .toLowerCase()
-                      .includes(searchTerm.toLowerCase()),
+                      .includes(searchTerm.toLowerCase())
                   ).length > 0 ? (
                     options
                       .filter((option) =>
                         option.title
                           .toLowerCase()
-                          .includes(searchTerm.toLowerCase()),
+                          .includes(searchTerm.toLowerCase())
                       )
                       .map((option) => (
                         <div
                           key={option.value}
-                          className={`${value === option.title ? "bg-accent text-accent-foreground" : ""} hover:bg-accent/40 relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none disabled:pointer-events-none disabled:opacity-50`}
+                          className={`${value === option.title ? "bg-accent text-accent-foreground" : ""} hover:bg-accent/40 relative flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none disabled:pointer-events-none disabled:opacity-50`}
                           onClick={() => {
-                            setValue(option.title);
-                            setOpen(false);
+                            setValue(option.title)
+                            setOpen(false)
                           }}
                         >
                           <Image
@@ -97,7 +97,7 @@ const Combobox = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Combobox;
+export default Combobox

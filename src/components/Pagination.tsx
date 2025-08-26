@@ -1,38 +1,38 @@
-"use client";
+"use client"
 
-import React from "react";
+import React from "react"
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
-import { ButtonVariants } from "@/constants";
+import { ButtonVariants } from "@/constants"
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   EllipsisHorizontalIcon,
-} from "@/icons";
-import { ButtonProps } from "@/types";
+} from "@/icons"
+import { ButtonProps } from "@/types"
 
 /* eslint-disable */
 type Props = {
-  totalItems: number;
-  itemsPerPage: number;
-  currentPage: number;
-  setCurrentPage: (currentPage: number) => void;
-};
+  totalItems: number
+  itemsPerPage: number
+  currentPage: number
+  setCurrentPage: (currentPage: number) => void
+}
 /* eslint-enable */
 
 const PaginationItem = React.forwardRef(function PaginationItem(
   { className, ...props }: React.ComponentProps<"li">,
-  ref: React.Ref<HTMLLIElement>,
+  ref: React.Ref<HTMLLIElement>
 ) {
-  return <li ref={ref} className={className} {...props} />;
-});
+  return <li ref={ref} className={className} {...props} />
+})
 
 type PaginationLinkProps = {
-  isActive?: boolean;
+  isActive?: boolean
 } & Pick<ButtonProps, "size"> &
-  React.ComponentProps<typeof Link>;
+  React.ComponentProps<typeof Link>
 
 const PaginationLink = ({
   isActive,
@@ -44,7 +44,7 @@ const PaginationLink = ({
     aria-current={isActive ? "page" : undefined}
     {...props}
   />
-);
+)
 
 const PaginationEllipsis = ({ ...props }: React.ComponentProps<"span">) => (
   <span
@@ -59,7 +59,7 @@ const PaginationEllipsis = ({ ...props }: React.ComponentProps<"span">) => (
     />
     <span className="sr-only">More pages</span>
   </span>
-);
+)
 
 const Pagination = ({
   totalItems,
@@ -67,47 +67,47 @@ const Pagination = ({
   currentPage,
   setCurrentPage,
 }: Props) => {
-  const pageNumbers = [];
+  const pageNumbers = []
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
-    pageNumbers.push(i);
+    pageNumbers.push(i)
   }
 
-  const maxPageNum = 5; // Maximum page numbers to display at once
-  const pageNumLimit = Math.floor(maxPageNum / 2); // Current page should be in the middle if possible
+  const maxPageNum = 5 // Maximum page numbers to display at once
+  const pageNumLimit = Math.floor(maxPageNum / 2) // Current page should be in the middle if possible
 
   let activePages = pageNumbers.slice(
     Math.max(0, currentPage - 1 - pageNumLimit),
-    Math.min(currentPage - 1 + pageNumLimit + 1, pageNumbers.length),
-  );
+    Math.min(currentPage - 1 + pageNumLimit + 1, pageNumbers.length)
+  )
 
   const handleNextPage = () => {
     if (currentPage < pageNumbers.length) {
-      setCurrentPage(currentPage + 1);
+      setCurrentPage(currentPage + 1)
     }
-  };
+  }
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      setCurrentPage(currentPage - 1)
     }
-  };
+  }
 
   // Function to render page numbers with ellipsis
   const renderPages = () => {
     const renderedPages = activePages.map((page, idx) => (
       <PaginationItem
         key={idx}
-        className={
+        className={`${
           currentPage === page
             ? ButtonVariants.variant["outline"]
             : ButtonVariants.variant["ghost"]
-        }
+        } rounded-xs!`}
       >
         <PaginationLink href="#" onClick={() => setCurrentPage(page)}>
           {page}
         </PaginationLink>
       </PaginationItem>
-    ));
+    ))
 
     // Add ellipsis at the start if necessary
     if (activePages[0] > 1) {
@@ -115,8 +115,8 @@ const Pagination = ({
         <PaginationEllipsis
           key="ellipsis-start"
           onClick={() => setCurrentPage(activePages[0] - 1)}
-        />,
-      );
+        />
+      )
     }
 
     // Add ellipsis at the end if necessary
@@ -127,12 +127,12 @@ const Pagination = ({
           onClick={() =>
             setCurrentPage(activePages[activePages.length - 1] + 1)
           }
-        />,
-      );
+        />
+      )
     }
 
-    return renderedPages;
-  };
+    return renderedPages
+  }
 
   return (
     <nav
@@ -145,7 +145,7 @@ const Pagination = ({
           <PaginationLink
             aria-label="Go to previous page"
             size="default"
-            className="flex gap-1 rounded py-1 pl-1 pr-2.5 text-accent-foreground shadow-sm hover:bg-accent"
+            className="text-accent-foreground hover:bg-accent flex gap-1 py-1 pr-2.5 pl-1 shadow-xs"
             href="#"
             onClick={handlePrevPage}
           >
@@ -162,7 +162,7 @@ const Pagination = ({
           <PaginationLink
             aria-label="Go to next page"
             size="default"
-            className="flex gap-1 rounded py-1 pl-2.5 pr-1 text-accent-foreground shadow-sm hover:bg-accent"
+            className="text-accent-foreground hover:bg-accent flex gap-1 py-1 pr-1 pl-2.5 shadow-xs"
             href="#"
             onClick={handleNextPage}
           >
@@ -176,7 +176,7 @@ const Pagination = ({
         </PaginationItem>
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination

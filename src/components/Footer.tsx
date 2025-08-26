@@ -1,30 +1,31 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
-import Image from "next/image";
+import Image from "next/image"
+import Link from "next/link"
 
-import { CopyrightIcon } from "@/icons";
-import { fetchData } from "@/scripts/useFetchData";
-import { FooterProps, SocialMediaProps } from "@/types";
+import { CopyrightIcon } from "@/icons"
+import { fetchData } from "@/scripts/useFetchData"
+import { FooterProps, SocialMediaProps } from "@/types"
 
 const Footer = () => {
-  const [footerLinks, setFooterLinks] = useState<FooterProps[]>([]);
-  const [icons, setIcons] = useState<SocialMediaProps[]>([]);
+  const [footerLinks, setFooterLinks] = useState<FooterProps[]>([])
+  const [icons, setIcons] = useState<SocialMediaProps[]>([])
   useEffect(() => {
     const fetchOptions = async () => {
-      const newLink = await fetchData<FooterProps[]>("footerLinks");
-      setFooterLinks(newLink);
-      const newIcon = await fetchData<SocialMediaProps[]>("socialMedia");
-      setIcons(newIcon);
-    };
-    fetchOptions();
-  }, []);
+      const newLink = await fetchData<FooterProps[]>("footerLinks")
+      setFooterLinks(newLink)
+      const newIcon = await fetchData<SocialMediaProps[]>("socialMedia")
+      setIcons(newIcon)
+    }
+    fetchOptions()
+  }, [])
   return (
-    <footer className="mx-auto mt-72 max-w-[1440px] p-10 text-foreground">
-      <div className="flex flex-wrap items-start justify-between gap-20 max-lg:flex-col">
-        <div className="flex flex-col items-start">
-          <a href="/">
+    <footer className="text-foreground mx-auto mt-72 max-w-[1440px] p-10">
+      <div className="flex justify-between gap-20 max-lg:flex-col">
+        <div className="flex flex-col md:w-1/3">
+          <Link href="/">
             <Image
               src="/favicon.ico"
               alt="Vercel Icon"
@@ -32,8 +33,8 @@ const Footer = () => {
               width={10}
               height={10}
             />
-          </a>
-          <p className="mt-6 text-base leading-7 sm:max-w-sm">
+          </Link>
+          <p className="mt-6 text-base leading-7">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
             fermentum ultrices dui, venenatis iaculis elit molestie ut. Nunc
             eget accumsan risus. Sed at leo nec nunc condimentum tincidunt ac et
@@ -57,10 +58,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-wrap justify-between gap-20 lg:gap-10">
+        <div className="flex flex-1 flex-wrap justify-between gap-20 md:w-2/3 lg:gap-10">
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h4 className="mb-6 text-2xl font-medium leading-normal">
+              <h4 className="mb-6 text-2xl leading-normal font-medium">
                 {section.title}
               </h4>
               <ul>
@@ -69,7 +70,7 @@ const Footer = () => {
                     className="mt-3 text-base leading-normal hover:font-bold"
                     key={link.name}
                   >
-                    <a href={link.href}>{link.name}</a>
+                    <Link href={link.href}>{link.name}</Link>
                   </li>
                 ))}
               </ul>
@@ -92,7 +93,7 @@ const Footer = () => {
         <p className="cursor-pointer">Terms & Conditions</p>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

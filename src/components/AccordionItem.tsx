@@ -1,20 +1,20 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import Image from "next/image";
+import Image from "next/image"
 
-import { ChevronDownIcon } from "@/icons";
+import { ChevronDownIcon } from "@/icons"
 
-import { Separator } from ".";
+import { Separator } from "."
 
 type Props = {
-  trigger: string;
-  content: string;
-};
+  trigger: string
+  content: string
+}
 
 const AccordionItem = ({ trigger, content }: Props) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   return (
     <div>
       <div
@@ -25,17 +25,17 @@ const AccordionItem = ({ trigger, content }: Props) => {
         <Image
           src={ChevronDownIcon}
           alt="Chevron Down Icon"
-          className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          className={`text-muted-foreground h-4 w-4 shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         />
       </div>
       {isOpen && (
-        <div className="overflow-hidden text-sm open:animate-accordion-down">
-          <div className="pb-4 pt-0">{content}</div>
+        <div className="open:animate-accordion-down overflow-hidden text-sm">
+          <div className="pt-0 pb-4">{content}</div>
         </div>
       )}
       <Separator />
     </div>
-  );
-};
+  )
+}
 
-export default AccordionItem;
+export default AccordionItem

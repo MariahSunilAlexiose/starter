@@ -1,11 +1,11 @@
-import { Tabs } from "@/components";
-import { ToastButtons } from "@/containers";
+import { Tabs } from "@/components"
+import { ToastButtons } from "@/containers"
 
 export default function Home() {
   return (
-    <main className="">
+    <main>
       <ToastButtons />
       <Tabs />
     </main>
-  );
+  )
 }

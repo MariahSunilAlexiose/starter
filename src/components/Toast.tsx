@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import Image from "next/image";
+import Image from "next/image"
 
-import { ToastVariants } from "@/constants";
-import { XMarkIcon } from "@/icons";
-import { ToastProps } from "@/types";
+import { ToastVariants } from "@/constants"
+import { XMarkIcon } from "@/icons"
+import { ToastProps } from "@/types"
 
-import { Button } from ".";
+import { Button } from "."
 
 const Toast = ({
   id,
@@ -32,7 +32,7 @@ const Toast = ({
       </div>
       <Button
         variant="ghost"
-        className="w-3 pl-20 pr-3 hover:bg-transparent focus-visible:outline-offset-[-4px]"
+        className="w-3 pr-3 pl-20 hover:bg-transparent focus-visible:-outline-offset-4"
         onClick={() => removeToast(id)}
         size="icon"
       >
@@ -45,7 +45,7 @@ const Toast = ({
         />
       </Button>
     </div>
-  );
-};
+  )
+}
 
-export default Toast;
+export default Toast

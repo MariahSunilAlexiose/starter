@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata } from "next"
 
-import "../styles/globals.css";
+import "../styles/globals.css"
 
-import { Banner, Footer, Header } from "@/components";
-import { Toasts } from "@/containers";
-import { ThemeProvider, ToastProvider } from "@/providers";
+import { Banner, Footer, Header } from "@/components"
+import { Toasts } from "@/containers"
+import { ThemeProvider, ToastProvider } from "@/providers"
 
 export const metadata: Metadata = {
   title: "Starter Project",
@@ -16,22 +16,22 @@ export const metadata: Metadata = {
     // shortcut: [""],
   },
   manifest: "/site.webmanifest",
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <ThemeProvider>
       <ToastProvider>
         <html lang="en">
-          <body>
+          <body className="bg-background text-foreground relative">
             <Header />
             <Banner
               title="GeneriCon 2023"
-              description="Join us in Denver from June 7 – 9 to see what’s coming next."
+              description="Join us in Denver from June 7 &ndash; 9 to see what's coming next."
               callToActionText="Register Now"
             />
             <Toasts />
@@ -41,5 +41,5 @@ export default function RootLayout({
         </html>
       </ToastProvider>
     </ThemeProvider>
-  );
+  )
 }

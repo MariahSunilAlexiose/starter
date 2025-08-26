@@ -1,31 +1,32 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
-import { Card, Pagination } from "@/components";
-import { fetchData } from "@/scripts/useFetchData";
-import { RecipeProps } from "@/types";
+import { Card, Pagination } from "@/components"
+import { fetchData } from "@/scripts/useFetchData"
+import { RecipeProps } from "@/types"
+import { useItemsPerPage } from "@/utils"
 
 function Cards() {
-  const [isClient, setIsClient] = useState(false);
-  const [items, setItems] = useState<RecipeProps[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [itemsPerPage] = useState<number>(3);
-  const lastItemIndex = currentPage * itemsPerPage;
-  const firstItemIndex = lastItemIndex - itemsPerPage;
-  const currentItems = items.slice(firstItemIndex, lastItemIndex);
+  const [isClient, setIsClient] = useState(false)
+  const [items, setItems] = useState<RecipeProps[]>([])
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const itemsPerPage = useItemsPerPage()
+  const lastItemIndex = currentPage * itemsPerPage
+  const firstItemIndex = lastItemIndex - itemsPerPage
+  const currentItems = items.slice(firstItemIndex, lastItemIndex)
   useEffect(() => {
-    setIsClient(true);
+    setIsClient(true)
     const fetchOptions = async () => {
-      const newItem = await fetchData<RecipeProps[]>("recipes");
-      setItems(newItem);
-    };
-    fetchOptions();
-  }, []);
+      const newItem = await fetchData<RecipeProps[]>("recipes")
+      setItems(newItem)
+    }
+    fetchOptions()
+  }, [])
   return (
     <>
       {isClient ? (
-        <>
+        <div className="flex flex-col gap-5">
           <div className="flex justify-center gap-5">
             {currentItems.map((item) => (
               <Card
@@ -44,12 +45,12 @@ function Cards() {
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />
-        </>
+        </div>
       ) : (
         <></>
       )}
     </>
-  );
+  )
 }
 
-export default Cards;
+export default Cards

@@ -1,28 +1,28 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { StaticImport } from "next/dist/shared/lib/get-img-props"
 
 export type RecipeProps = {
-  id: string;
-  title: string;
-  image: string;
-  description: string;
-  content: string;
-  vegan: boolean;
-};
+  id: string
+  title: string
+  image: string
+  description: string
+  content: string
+  vegan: boolean
+}
 
 export type RadioProps = {
-  title: string;
-  value: string;
-};
+  title: string
+  value: string
+}
 
 export type SelectProps = {
-  title: string;
-  value: string;
-};
+  title: string
+  value: string
+}
 
 export type AccordionProps = {
-  trigger: string;
-  content: string;
-};
+  trigger: string
+  content: string
+}
 
 /* eslint-disable */
 export type ButtonProps = {
@@ -33,82 +33,82 @@ export type ButtonProps = {
     | "accent"
     | "ghost"
     | "link"
-    | "success";
-  size?: "default" | "sm" | "lg" | "icon";
-  children: React.ReactNode;
-  type?: "submit" | "reset" | "button";
-  className?: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-};
+    | "success"
+  size?: "default" | "sm" | "lg" | "icon"
+  children: React.ReactNode
+  type?: "submit" | "reset" | "button"
+  className?: string
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+}
 /* eslint-enable */
 
 export type NavMenuProps = {
-  name: string;
-  description: string;
-  href: string;
-  icon: string;
-};
+  name: string
+  description: string
+  href: string
+  icon: string
+}
 
 export type CallsToActionProps = {
-  name: string;
-  href: string;
-  icon: string;
-};
+  name: string
+  href: string
+  icon: string
+}
 
 export type FooterProps = {
-  title: string;
+  title: string
   links: {
-    name: string;
-    href: string;
-  }[];
-};
+    name: string
+    href: string
+  }[]
+}
 
 export type SocialMediaProps = {
-  image: string;
-  alt: string;
-};
+  image: string
+  alt: string
+}
 
 export type IconType = {
-  img: StaticImport;
-  name: string;
-};
+  img: StaticImport
+  name: string
+}
 
 export type ToastVariant = {
-  styles: string;
-  title?: string;
-  description?: string;
-  icon: IconType;
-};
+  styles: string
+  title?: string
+  description?: string
+  icon: IconType
+}
 
 export type ToastVariantType = {
-  success: ToastVariant;
-  error: ToastVariant;
-  info: ToastVariant;
-};
+  success: ToastVariant
+  error: ToastVariant
+  info: ToastVariant
+}
 
 export type ToastType = {
-  type: "success" | "error" | "info";
-  id: string;
-  title: string;
-  description: string;
-};
+  type: "success" | "error" | "info"
+  id: string
+  title: string
+  description: string
+}
 
 /* eslint-disable */
 export type ToastContextType = {
-  toasts: ToastType[];
+  toasts: ToastType[]
   addToast: (
     type: "success" | "error" | "info",
     title: string,
-    description: string,
-  ) => void;
-  removeToast: (id: string) => void;
-};
+    description: string
+  ) => void
+  removeToast: (id: string) => void
+}
 
 export type ToastProps = {
-  id: string;
-  type: "success" | "error" | "info";
-  title: string;
-  description: string;
-  removeToast: (id: string) => void;
-};
+  id: string
+  type: "success" | "error" | "info"
+  title: string
+  description: string
+  removeToast: (id: string) => void
+}
 /* eslint-enable*/

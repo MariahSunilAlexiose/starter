@@ -1,6 +1,6 @@
 type Props = {
-  className: string;
-};
+  className: string
+}
 
 const Skeleton = ({ className, ...props }: Props) => {
   return (
@@ -8,7 +8,7 @@ const Skeleton = ({ className, ...props }: Props) => {
       className={`${className} bg-primary/10 animate-pulse rounded-md`}
       {...props}
     />
-  );
-};
+  )
+}
 
-export default Skeleton;
+export default Skeleton
