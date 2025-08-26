@@ -17,11 +17,29 @@ import RadioInput from "./RadioInput"
 import Separator from "./Separator"
 import Skeleton from "./Skeleton"
 import Switch from "./Switch"
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "./Table"
 import Tabs from "./Tabs"
 import TextArea from "./TextArea"
 import Toast from "./Toast"
 
 export {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
   Skeleton,
   Toast,
   Footer,
