@@ -1,4 +1,9 @@
-import AccordionItem from "./AccordionItem"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./Accordion"
 import Alert from "./Alert"
 import Avatar from "./Avatar"
 import Badge from "./Badge"
@@ -53,7 +58,10 @@ export {
   Checkbox,
   Switch,
   Card,
+  Accordion,
+  AccordionContent,
   AccordionItem,
+  AccordionTrigger,
   Avatar,
   Badge,
   Button,

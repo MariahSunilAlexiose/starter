@@ -2,13 +2,20 @@
 
 import { JSX, useEffect, useState } from "react"
 
-import { Accordion, Cards, RadioGroup, ToastButtons } from "@/containers"
+import { Cards, RadioGroup, ToastButtons } from "@/containers"
+import { fetchData } from "@/scripts/useFetchData"
+import { AccordionProps } from "@/types"
 
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
   Alert,
   Badge,
   Combobox,
   Dialog,
+  Skeleton,
   Table,
   TableBody,
   TableCaption,
@@ -19,7 +26,6 @@ import {
   TableRow,
   TextArea,
 } from "."
-import Skeleton from "./Skeleton"
 
 const invoices = [
   {
@@ -88,110 +94,140 @@ const TabTrigger = ({ label, activeTab, setActiveTab }: TabProps) => {
   )
 }
 
-const tabComponents: Record<string, JSX.Element> = {
-  cards: (
-    <div className="mt-2 h-12">
-      <Cards />
-    </div>
-  ),
-  accordion: (
-    <div className="mt-2 h-12">
-      <Accordion />
-    </div>
-  ),
-  alert: (
-    <div className="mt-5">
-      <Alert
-        variant="default"
-        title="Heads up!"
-        description="You can add components to your app using the cli."
-      />
-    </div>
-  ),
-  "text-area": (
-    <div className="mt-5">
-      <TextArea placeholder="Type your message here." />
-    </div>
-  ),
-  radio: (
-    <div className="mt-5 flex justify-center">
-      <RadioGroup />
-    </div>
-  ),
-  dialog: (
-    <div className="mt-5 flex justify-center">
-      <Dialog />
-    </div>
-  ),
-  combobox: (
-    <div className="mt-5 flex justify-center">
-      <Combobox />
-    </div>
-  ),
-  button: (
-    <div className="mt-5 flex flex-col items-center justify-center text-center">
-      <p>On clicking, the corresponding toast is activated!</p>
-      <ToastButtons />
-    </div>
-  ),
-  table: (
-    <div className="mt-5 max-w-2xl mx-auto">
-      <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {invoices.map((invoice) => (
-            <TableRow key={invoice.invoice}>
-              <TableCell className="font-medium">{invoice.invoice}</TableCell>
-              <TableCell>{invoice.paymentStatus}</TableCell>
-              <TableCell>{invoice.paymentMethod}</TableCell>
-              <TableCell className="text-right">
-                {invoice.totalAmount}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={3}>Total</TableCell>
-            <TableCell className="text-right">$2,500.00</TableCell>
-          </TableRow>
-        </TableFooter>
-      </Table>
-    </div>
-  ),
-  badge: (
-    <div className="flex items-center justify-center mt-5 gap-2">
-      <Badge>Badge</Badge>
-      <Badge variant="primary">Primary</Badge>
-      <Badge variant="accent">Accent</Badge>
-      <Badge variant="destructive">Destructive</Badge>
-      <Badge variant="outline">Outline</Badge>
-      <Badge
-        className="h-5 min-w-5 rounded-full px-1 tabular-nums"
-        variant="outline"
-      >
-        20+
-      </Badge>
-    </div>
-  ),
-}
-
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState<string>("cards")
   const [loading, setLoading] = useState(true)
+  const [items, setItems] = useState<AccordionProps[]>([])
+  const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
     }, 2000)
+  }, [])
+
+  const tabComponents: Record<string, JSX.Element> = {
+    cards: (
+      <div className="mt-2 h-12">
+        <Cards />
+      </div>
+    ),
+    accordion: (
+      <div className="mt-2 justify-center flex ">
+        <Accordion className="w-3xl">
+          {items.map((item, index) => {
+            const isOpen = openIndex === index
+            return (
+              <AccordionItem key={index}>
+                <AccordionTrigger
+                  isOpen={isOpen}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                >
+                  {item.trigger}
+                </AccordionTrigger>
+                <AccordionContent
+                  isOpen={isOpen}
+                  className="flex flex-col gap-4 text-balance"
+                >
+                  {item.content}
+                </AccordionContent>
+              </AccordionItem>
+            )
+          })}
+        </Accordion>
+      </div>
+    ),
+    alert: (
+      <div className="mt-5">
+        <Alert
+          variant="default"
+          title="Heads up!"
+          description="You can add components to your app using the cli."
+        />
+      </div>
+    ),
+    "text-area": (
+      <div className="mt-5">
+        <TextArea placeholder="Type your message here." />
+      </div>
+    ),
+    radio: (
+      <div className="mt-5 flex justify-center">
+        <RadioGroup />
+      </div>
+    ),
+    dialog: (
+      <div className="mt-5 flex justify-center">
+        <Dialog />
+      </div>
+    ),
+    combobox: (
+      <div className="mt-5 flex justify-center">
+        <Combobox />
+      </div>
+    ),
+    button: (
+      <div className="mt-5 flex flex-col items-center justify-center text-center">
+        <p>On clicking, the corresponding toast is activated!</p>
+        <ToastButtons />
+      </div>
+    ),
+    table: (
+      <div className="mt-5 max-w-2xl mx-auto">
+        <Table>
+          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Invoice</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Method</TableHead>
+              <TableHead className="text-right">Amount</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {invoices.map((invoice) => (
+              <TableRow key={invoice.invoice}>
+                <TableCell className="font-medium">{invoice.invoice}</TableCell>
+                <TableCell>{invoice.paymentStatus}</TableCell>
+                <TableCell>{invoice.paymentMethod}</TableCell>
+                <TableCell className="text-right">
+                  {invoice.totalAmount}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell colSpan={3}>Total</TableCell>
+              <TableCell className="text-right">$2,500.00</TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </div>
+    ),
+    badge: (
+      <div className="flex items-center justify-center mt-5 gap-2">
+        <Badge>Badge</Badge>
+        <Badge variant="primary">Primary</Badge>
+        <Badge variant="accent">Accent</Badge>
+        <Badge variant="destructive">Destructive</Badge>
+        <Badge variant="outline">Outline</Badge>
+        <Badge
+          className="h-5 min-w-5 rounded-full px-1 tabular-nums"
+          variant="outline"
+        >
+          20+
+        </Badge>
+      </div>
+    ),
+  }
+
+  useEffect(() => {
+    const fetchOptions = async () => {
+      const newItem = await fetchData<AccordionProps[]>("accordion")
+      setItems(newItem)
+    }
+    fetchOptions()
   }, [])
 
   return (
