@@ -6,6 +6,7 @@ import { Accordion, Cards, RadioGroup, ToastButtons } from "@/containers"
 
 import {
   Alert,
+  Badge,
   Combobox,
   Dialog,
   Table,
@@ -166,6 +167,21 @@ const tabComponents: Record<string, JSX.Element> = {
       </Table>
     </div>
   ),
+  badge: (
+    <div className="flex items-center justify-center mt-5 gap-2">
+      <Badge>Badge</Badge>
+      <Badge variant="primary">Primary</Badge>
+      <Badge variant="accent">Accent</Badge>
+      <Badge variant="destructive">Destructive</Badge>
+      <Badge variant="outline">Outline</Badge>
+      <Badge
+        className="h-5 min-w-5 rounded-full px-1 tabular-nums"
+        variant="outline"
+      >
+        20+
+      </Badge>
+    </div>
+  ),
 }
 
 const Tabs = () => {
@@ -197,6 +213,7 @@ const Tabs = () => {
               "Combobox",
               "Button",
               "Table",
+              "Badge",
             ].map((label) => (
               <TabTrigger
                 key={label}
