@@ -1,10 +1,8 @@
 import { Tabs } from "@/components"
-import { ToastButtons } from "@/containers"
 
 export default function Home() {
   return (
-    <main>
-      <ToastButtons />
+    <main className="mx-6">
       <Tabs />
     </main>
   )
