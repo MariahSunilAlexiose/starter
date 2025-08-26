@@ -11,16 +11,20 @@ type Props = {
 }
 
 const RadioInput = ({ title, value, selectedValue, onValueChange }: Props) => {
+  const inputId = `radio-${title.replace(/\s+/g, "-").toLowerCase()}`
   return (
     <div className="flex items-center space-x-2">
       <input
         type="radio"
+        id={inputId}
         className="accent-primary"
         value={title}
         onChange={() => onValueChange(value)}
         checked={value === selectedValue}
       />
-      <Label htmlFor={title}>{title}</Label>
+      <Label htmlFor={inputId} className="cursor-pointer">
+        {title}
+      </Label>
     </div>
   )
 }
