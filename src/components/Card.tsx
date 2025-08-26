@@ -25,7 +25,7 @@ const Card = ({ title, image, description, content, footer }: Props) => {
       </div>
       <div className="flex items-center justify-between p-6 pt-0">
         <Button>View Recipes</Button>
-        {footer && <Badge variant="accent" title="Vegan!" />}
+        {footer && <Badge variant="accent">Vegan!</Badge>}
       </div>
     </div>
   )
