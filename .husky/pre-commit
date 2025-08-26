@@ -1,26 +1,15 @@
 echo 'Styling, testing your project before committing...'
 
-# Check tsconfig standards
-yarn check-types ||
-(
-    echo 'Failed Type check...'
-    false;
-)
+# Type check
+yarn check-types || {
+  echo '❌ Failed Type check...'
+  exit 1
+}
 
-yarn lint ||
-(
-    echo 'ESLint Check Failed...'
-    false; 
-)
+# Run lint-staged (only affects staged files)
+npx lint-staged || {
+  echo '❌ Lint-staged checks failed...'
+  exit 1
+}
 
-yarn prettier ||
-(
-    echo 'Prettier Check Failed...';
-    false;
-)
-
-git add -A
-
-npx lint-staged
-
-echo 'Committing...'
+echo '✅ All checks passed. Committing...'
