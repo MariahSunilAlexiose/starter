@@ -7,24 +7,23 @@ import { ToastVariantType } from "@/types"
 
 export const ButtonVariants = {
   variant: {
-    default: "bg-foreground text-background shadow hover:bg-foreground/85",
+    default: "bg-foreground text-background shadow-sm hover:bg-foreground/90",
+    primary: "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90",
     destructive:
-      "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/85",
+      "bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive/90",
     outline:
-      "border rounded border-input shadow-sm hover:bg-accent hover:text-foreground",
-    accent: "bg-accent text-foreground shadow-sm hover:bg-accent/85",
-    primary: "bg-primary text-background shadow hover:bg-primary/85",
-    link: "text-primary hover:text-primary/85 underline-offset-4 hover:underline",
+      "border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
+    accent: "bg-accent text-accent-foreground shadow-xs hover:bg-accent/80",
+    ghost: "hover:bg-accent hover:text-accent-foreground",
+    link: "text-primary underline-offset-4 hover:underline",
     success:
-      "bg-green-600 text-primary-foreground shadow-sm hover:bg-green/85 shadow-green-400/40",
-    ghost: "rounded hover:bg-accent/80 hover:text-foreground",
+      "bg-green-600 text-primary-foreground shadow-sm hover:bg-green-600/90 shadow-green-400/40",
   },
   size: {
-    default: "h-9 px-4 py-2",
-    xs: "h-4 p-3 rounded-md text-xs font-bold",
-    sm: "h-8 rounded-md px-3 text-sm",
-    lg: "h-10 rounded-md px-8 text-lg",
-    icon: "h-[76px] w-[76px]",
+    default: "h-8 px-4 py-2 has-[>svg]:px-3 text-base",
+    sm: "h-6 px-2 rounded-md has-[>svg]:px-2.5 text-sm",
+    lg: "h-10 rounded-md px-6 has-[>svg]:px-4 text-lg",
+    icon: "size-9",
   },
 }
 

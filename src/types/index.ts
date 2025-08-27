@@ -28,6 +28,7 @@ export type AccordionProps = {
 export type ButtonProps = {
   variant?:
     | "default"
+    | "primary"
     | "destructive"
     | "outline"
     | "accent"
