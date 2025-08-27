@@ -54,8 +54,22 @@ const Dialog = () => {
                 className="col-span-3"
               />
             </div>
-            <div className="flex flex-col-reverse sm:flex-row sm:justify-start sm:space-x-2 sm:pl-24">
-              <Checkbox id="email" label="You Sure?" />
+            <div className="flex flex-col items-start space-y-4 pl-24">
+              <div className="flex items-center space-x-2">
+                <Checkbox id="toggle" disabled />
+                <Label
+                  htmlFor="toggle"
+                  className="text-sm text-muted-foreground"
+                >
+                  Email notifications (disabled)
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Checkbox id="terms" defaultChecked />
+                <Label htmlFor="terms" className="text-sm">
+                  I agree to the terms and conditions
+                </Label>
+              </div>
             </div>
           </div>
           <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">

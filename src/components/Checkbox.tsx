@@ -1,26 +1,27 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-import { Label } from "."
-
-type Props = {
-  id: string
-  label?: string
-}
-
-const Checkbox = ({ id, label }: Props) => {
+function Checkbox({
+  className,
+  defaultChecked,
+  ...props
+}: React.InputHTMLAttributes<HTMLInputElement>) {
   const [checked, setChecked] = useState<boolean>(false)
+  useEffect(() => {
+    setChecked(defaultChecked ?? false)
+  }, [defaultChecked])
   return (
-    <div className="flex items-center space-x-3" id={id}>
+    <label className="relative inline-flex items-center">
       <input
         type="checkbox"
-        className={`form-checkbox h-4 w-4 ${checked ? "accent-primary" : ""}`}
+        data-slot="checkbox"
+        className={`${className} ${checked ? "bg-primary text-primary-background border-primary" : ""} peer border-input ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 size-4 shrink-0 rounded-[4px] border shadow-xs transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:focus-visible:ring-0`}
         checked={checked}
         onChange={(e) => setChecked(e.target.checked)}
+        {...props}
       />
-      {label && <Label htmlFor={label}>{label}</Label>}
-    </div>
+    </label>
   )
 }
 
