@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "./Accordion"
 import { Alert, AlertDescription, AlertTitle } from "./Alert"
-import Avatar from "./Avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "./Avatar"
 import Badge from "./Badge"
 import Banner from "./Banner"
 import Button from "./Button"
@@ -65,6 +65,8 @@ export {
   AccordionItem,
   AccordionTrigger,
   Avatar,
+  AvatarFallback,
+  AvatarImage,
   Badge,
   Button,
   Separator,

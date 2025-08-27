@@ -1,28 +1,51 @@
-import Image from "next/image"
+import React from "react"
 
-type Props = {
-  image?: string
-  title: string
-}
+import Image, { ImageProps } from "next/image"
 
-const Avatar = ({ image, title }: Props) => {
+function Avatar({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className="flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-      {image ? (
-        <Image
-          src={image}
-          alt={title}
-          className="aspect-square h-full w-full"
-          width={100}
-          height={100}
-        />
-      ) : (
-        <div className="bg-muted-foreground/20 flex h-full w-full items-center justify-center rounded-full">
-          {title.slice(0, 2)}
-        </div>
-      )}
+    <div
+      data-slot="avatar"
+      className={`${className} relative flex size-8 shrink-0 overflow-hidden rounded-full`}
+      {...props}
+    >
+      {children}
     </div>
   )
 }
 
-export default Avatar
+function AvatarImage({ className, alt, ...props }: Omit<ImageProps, "fill">) {
+  return (
+    <div className={`relative aspect-square size-full ${className}`}>
+      <Image
+        data-slot="avatar-image"
+        alt={alt}
+        fill
+        className="object-cover"
+        {...props}
+      />
+    </div>
+  )
+}
+
+function AvatarFallback({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      data-slot="avatar-fallback"
+      className={`${className} bg-muted-foreground/50 text-background flex size-full items-center justify-center rounded-full`}
+      {...props}
+    >
+      {children}
+    </div>
+  )
+}
+
+export { Avatar, AvatarImage, AvatarFallback }

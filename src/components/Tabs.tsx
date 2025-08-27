@@ -6,6 +6,11 @@ import Image from "next/image"
 
 import { Cards, RadioGroup, ToastButtons } from "@/containers"
 import { CheckCircleIcon, ExclamationTriangleIcon } from "@/icons"
+import {
+  ChocolateCookiesImg,
+  GrilledMushroomsImg,
+  MushroomRisottoImg,
+} from "@/img"
 import { fetchData } from "@/scripts/useFetchData"
 import { AccordionProps } from "@/types"
 
@@ -17,6 +22,9 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
   Badge,
   Combobox,
   Dialog,
@@ -38,7 +46,7 @@ type TabProps = {
   setActiveTab: React.Dispatch<React.SetStateAction<string>>
 }
 
-export type TableProps = {
+export type InvoiceProps = {
   invoice: string
   paymentStatus: string
   totalAmount: string
@@ -65,7 +73,7 @@ const Tabs = () => {
   const [activeTab, setActiveTab] = useState<string>("cards")
   const [loading, setLoading] = useState(true)
   const [accordionItems, setAccordionItems] = useState<AccordionProps[]>([])
-  const [tableItems, setTableItems] = useState<TableProps[]>([])
+  const [tableItems, setTableItems] = useState<InvoiceProps[]>([])
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   useEffect(() => {
@@ -139,6 +147,33 @@ const Tabs = () => {
               </ul>
             </AlertDescription>
           </Alert>
+        </div>
+      </div>
+    ),
+    avatar: (
+      <div className="flex justify-center mt-5">
+        <div className="flex flex-row flex-wrap items-center gap-12">
+          <Avatar>
+            <AvatarImage src={ChocolateCookiesImg} alt="Chocolate Cookies" />
+            <AvatarFallback>CC</AvatarFallback>
+          </Avatar>
+          <Avatar className="rounded-lg!">
+            <AvatarImage src={GrilledMushroomsImg} alt="Grilled Mushrooms" />
+            <AvatarFallback>GM</AvatarFallback>
+          </Avatar>
+          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
+            <Avatar>
+              <AvatarFallback>CC</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage src={MushroomRisottoImg} alt="Mushroom Risotto" />
+              <AvatarFallback>MR</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage src={ChocolateCookiesImg} alt="Chocolate Cookies" />
+              <AvatarFallback>CC</AvatarFallback>
+            </Avatar>
+          </div>
         </div>
       </div>
     ),
@@ -221,7 +256,7 @@ const Tabs = () => {
       const fetchedAccordionItems =
         await fetchData<AccordionProps[]>("accordion")
       setAccordionItems(fetchedAccordionItems)
-      const fetchedTableItems = await fetchData<TableProps[]>("table")
+      const fetchedTableItems = await fetchData<InvoiceProps[]>("table")
       setTableItems(fetchedTableItems)
     }
     fetchOptions()
@@ -247,6 +282,7 @@ const Tabs = () => {
               "Button",
               "Table",
               "Badge",
+              "Avatar",
             ].map((label) => (
               <TabTrigger
                 key={label}
