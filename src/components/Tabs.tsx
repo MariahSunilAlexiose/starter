@@ -32,55 +32,17 @@ import {
   TextArea,
 } from "."
 
-const invoices = [
-  {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
-]
-
 type TabProps = {
   label: string
   activeTab: string
   setActiveTab: React.Dispatch<React.SetStateAction<string>>
+}
+
+export type TableProps = {
+  invoice: string
+  paymentStatus: string
+  totalAmount: string
+  paymentMethod: string
 }
 
 const TabTrigger = ({ label, activeTab, setActiveTab }: TabProps) => {
@@ -102,7 +64,8 @@ const TabTrigger = ({ label, activeTab, setActiveTab }: TabProps) => {
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState<string>("cards")
   const [loading, setLoading] = useState(true)
-  const [items, setItems] = useState<AccordionProps[]>([])
+  const [accordionItems, setAccordionItems] = useState<AccordionProps[]>([])
+  const [tableItems, setTableItems] = useState<TableProps[]>([])
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   useEffect(() => {
@@ -120,7 +83,7 @@ const Tabs = () => {
     accordion: (
       <div className="mt-2 justify-center flex ">
         <Accordion className="w-3xl">
-          {items.map((item, index) => {
+          {accordionItems.map((item, index) => {
             const isOpen = openIndex === index
             return (
               <AccordionItem key={index}>
@@ -218,14 +181,12 @@ const Tabs = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {invoices.map((invoice) => (
-              <TableRow key={invoice.invoice}>
-                <TableCell className="font-medium">{invoice.invoice}</TableCell>
-                <TableCell>{invoice.paymentStatus}</TableCell>
-                <TableCell>{invoice.paymentMethod}</TableCell>
-                <TableCell className="text-right">
-                  {invoice.totalAmount}
-                </TableCell>
+            {tableItems.map((item) => (
+              <TableRow key={item.invoice}>
+                <TableCell className="font-medium">{item.invoice}</TableCell>
+                <TableCell>{item.paymentStatus}</TableCell>
+                <TableCell>{item.paymentMethod}</TableCell>
+                <TableCell className="text-right">{item.totalAmount}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -257,8 +218,11 @@ const Tabs = () => {
 
   useEffect(() => {
     const fetchOptions = async () => {
-      const newItem = await fetchData<AccordionProps[]>("accordion")
-      setItems(newItem)
+      const fetchedAccordionItems =
+        await fetchData<AccordionProps[]>("accordion")
+      setAccordionItems(fetchedAccordionItems)
+      const fetchedTableItems = await fetchData<TableProps[]>("table")
+      setTableItems(fetchedTableItems)
     }
     fetchOptions()
   }, [])
