@@ -2,7 +2,10 @@
 
 import { JSX, useEffect, useState } from "react"
 
+import Image from "next/image"
+
 import { Cards, RadioGroup, ToastButtons } from "@/containers"
+import { CheckCircleIcon, ExclamationTriangleIcon } from "@/icons"
 import { fetchData } from "@/scripts/useFetchData"
 import { AccordionProps } from "@/types"
 
@@ -12,6 +15,8 @@ import {
   AccordionItem,
   AccordionTrigger,
   Alert,
+  AlertDescription,
+  AlertTitle,
   Badge,
   Combobox,
   Dialog,
@@ -138,12 +143,40 @@ const Tabs = () => {
       </div>
     ),
     alert: (
-      <div className="mt-5">
-        <Alert
-          variant="default"
-          title="Heads up!"
-          description="You can add components to your app using the cli."
-        />
+      <div className="flex justify-center mt-5">
+        <div className="flex flex-col max-w-3xl items-center gap-4">
+          <Alert>
+            <Image
+              src={CheckCircleIcon}
+              alt="Check Circle Icon"
+              width={25}
+              height={25}
+              className="w-6 h-6"
+            />
+            <AlertTitle>Success! Your changes have been saved</AlertTitle>
+            <AlertDescription>
+              This is an alert with icon, title and description.
+            </AlertDescription>
+          </Alert>
+          <Alert variant="destructive">
+            <Image
+              src={ExclamationTriangleIcon}
+              alt="Exclamation Triangle Icon"
+              width={25}
+              height={25}
+              className="w-6 h-6"
+            />
+            <AlertTitle>Unable to process your payment.</AlertTitle>
+            <AlertDescription>
+              <p>Please verify your billing information and try again.</p>
+              <ul className="list-inside list-disc text-sm">
+                <li>Check your card details</li>
+                <li>Ensure sufficient funds</li>
+                <li>Verify billing address</li>
+              </ul>
+            </AlertDescription>
+          </Alert>
+        </div>
       </div>
     ),
     "text-area": (

@@ -1,51 +1,52 @@
-import Image from "next/image"
+import React from "react"
 
-import { ExclamationTriangleIcon, TerminalIcon } from "@/icons"
-
-type Props = {
-  variant?: "default" | "accent" | "destructive" | "outline"
-  title: string
-  description: string
+type AlertProps = {
+  variant?: "default" | "destructive"
+  className?: string
 }
 
-const variants = {
-  default:
-    "border-transparent bg-primary/80 text-border shadow-sm hover:bg-primary/70",
-  accent:
-    "border-transparent bg-accent text-accent-foreground hover:bg-accent/80",
+const alertVariants = {
+  default: "bg-background text-foreground",
   destructive:
-    "border-transparent outline-1 outline-solid outline-destructive text-destructive font-medium shadow-sm hover:bg-destructive/20",
-  outline: "text-foreground",
+    "border-destructive/50 text-destructive dark:text-destructive-foreground/80 dark:border-destructive [&>img]:text-current dark:bg-destructive/50",
 }
 
-const Alert = ({ variant = "default", title, description }: Props) => {
+function Alert({
+  variant = "default",
+  className,
+  ...props
+}: React.ComponentProps<"div"> & AlertProps) {
   return (
     <div
-      className={`${variants[variant]} relative w-full rounded-lg border px-4 py-4 pl-7 text-sm`}
-    >
-      {variant != "destructive" ? (
-        <Image
-          src={TerminalIcon}
-          alt="Terminal Icon"
-          className="text-foreground absolute top-4 left-4 h-6 w-6"
-        />
-      ) : (
-        <Image
-          src={ExclamationTriangleIcon}
-          alt="Exclamation Icon"
-          className="text-foreground absolute top-4 left-4 h-4 w-4"
-        />
-      )}
-      <div className="pl-5">
-        <h5 className="mb-1 leading-none font-extrabold tracking-tight">
-          {title}
-        </h5>
-        <div className="text-sm">
-          <p className="leading-relaxed">{description}</p>
-        </div>
-      </div>
-    </div>
+      data-slot="alert"
+      role="alert"
+      className={`${alertVariants[variant]} ${className} relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>img]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>img]:gap-x-3 gap-y-0.5 items-start [&>img]:size-4 [&>img]:translate-y-0.5 [&>img]:text-current`}
+      {...props}
+    />
   )
 }
 
-export default Alert
+function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="alert-title"
+      className={`${className} col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight`}
+      {...props}
+    />
+  )
+}
+
+function AlertDescription({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="alert-description"
+      className={`${className} col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed`}
+      {...props}
+    />
+  )
+}
+
+export { Alert, AlertTitle, AlertDescription }

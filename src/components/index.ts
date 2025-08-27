@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./Accordion"
-import Alert from "./Alert"
+import { Alert, AlertDescription, AlertTitle } from "./Alert"
 import Avatar from "./Avatar"
 import Badge from "./Badge"
 import Banner from "./Banner"
@@ -54,6 +54,8 @@ export {
   Combobox,
   Pagination,
   Dialog,
+  AlertDescription,
+  AlertTitle,
   Alert,
   Checkbox,
   Switch,
