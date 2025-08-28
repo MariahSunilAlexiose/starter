@@ -12,7 +12,17 @@ import Button from "./Button"
 import Card from "./Card"
 import Checkbox from "./Checkbox"
 import Combobox from "./Combobox"
-import Dialog from "./Dialog"
+import {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from "./Command"
 import Footer from "./Footer"
 import Header from "./Header"
 import Input from "./Input"
@@ -43,6 +53,15 @@ import TextArea from "./TextArea"
 import Toast from "./Toast"
 
 export {
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
   Table,
   TableBody,
   TableCaption,
