@@ -167,7 +167,7 @@ function CommandItem({
   return (
     <div
       data-slot="command-item"
-      className={`${className} relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm select-none outline-none ${
+      className={`${className} relative flex hover:bg-accent cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-sm select-none outline-none ${
         disabled ? "pointer-events-none opacity-50" : ""
       }`}
       onClick={handleClick}

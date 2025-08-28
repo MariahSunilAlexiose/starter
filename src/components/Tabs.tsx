@@ -105,6 +105,7 @@ const Tabs = () => {
   const { addToast } = useToast()
   const [open, setOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState<string>("")
+  const [selectedValue, setSelectedValue] = useState<string>("Select option...")
   const [options, setOptions] = useState<SelectProps[]>([])
   const [selected, setSelected] = useState<string>("comfortable")
   const [progress, setProgress] = useState(13)
@@ -317,11 +318,7 @@ const Tabs = () => {
               aria-expanded={open}
               className="justify-between"
             >
-              {searchTerm
-                ? options.find(
-                    (option) => option.value === searchTerm.toLowerCase()
-                  )?.title
-                : "Select option..."}
+              {selectedValue}
               <Image
                 src={ChevronUpDownIcon}
                 alt="Chevron Up Down Icon"
@@ -351,6 +348,17 @@ const Tabs = () => {
                               ? ""
                               : currentsearchTerm
                           )
+                          const normalized = currentsearchTerm.toLowerCase()
+                          const selectedNormalized = selectedValue.toLowerCase()
+
+                          if (normalized === selectedNormalized) {
+                            // Unselect if the same option is clicked again
+                            setSelectedValue("Select option...")
+                          } else {
+                            setSelectedValue(currentsearchTerm)
+                          }
+
+                          setSearchTerm("") // Clear search input after selection
                           setOpen(false)
                         }}
                       >
@@ -358,7 +366,8 @@ const Tabs = () => {
                           src={CheckIcon}
                           alt="Check Icon"
                           className={`${
-                            searchTerm.toLowerCase() === option.value
+                            selectedValue.toLowerCase() ===
+                            option.title.toLowerCase()
                               ? "opacity-100"
                               : "opacity-0"
                           } size-5`}
