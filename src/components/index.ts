@@ -18,6 +18,12 @@ import Header from "./Header"
 import Input from "./Input"
 import Label from "./Label"
 import Pagination from "./Pagination"
+import {
+  Popover,
+  PopoverAnchor,
+  PopoverContent,
+  PopoverTrigger,
+} from "./Popover"
 import RadioInput from "./RadioInput"
 import Separator from "./Separator"
 import Skeleton from "./Skeleton"
@@ -45,6 +51,10 @@ export {
   TableHead,
   TableHeader,
   TableRow,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverAnchor,
   Skeleton,
   Toast,
   Footer,
