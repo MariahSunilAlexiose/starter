@@ -11,7 +11,6 @@ import Banner from "./Banner"
 import Button from "./Button"
 import Card from "./Card"
 import Checkbox from "./Checkbox"
-import Combobox from "./Combobox"
 import {
   Command,
   CommandDialog,
@@ -91,7 +90,6 @@ export {
   Banner,
   Header,
   Tabs,
-  Combobox,
   Pagination,
   Dialog,
   DialogTrigger,

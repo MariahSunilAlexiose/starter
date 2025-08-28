@@ -5,7 +5,12 @@ import { JSX, useEffect, useState } from "react"
 import Image from "next/image"
 
 import { Cards, RadioGroup } from "@/containers"
-import { CheckCircleIcon, ExclamationTriangleIcon } from "@/icons"
+import {
+  CheckCircleIcon,
+  CheckIcon,
+  ChevronUpDownIcon,
+  ExclamationTriangleIcon,
+} from "@/icons"
 import {
   ChocolateCookiesImg,
   GrilledMushroomsImg,
@@ -13,7 +18,7 @@ import {
 } from "@/img"
 import { useToast } from "@/providers"
 import { fetchData } from "@/scripts/useFetchData"
-import { AccordionProps } from "@/types"
+import { AccordionProps, SelectProps } from "@/types"
 
 import {
   Accordion,
@@ -29,7 +34,11 @@ import {
   Badge,
   Button,
   Checkbox,
-  Combobox,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
   Dialog,
   DialogClose,
   DialogContent,
@@ -40,6 +49,9 @@ import {
   DialogTrigger,
   Input,
   Label,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
   Skeleton,
   Table,
   TableBody,
@@ -88,11 +100,23 @@ const Tabs = () => {
   const [tableItems, setTableItems] = useState<InvoiceProps[]>([])
   const [openIndex, setOpenIndex] = useState<number | null>(0)
   const { addToast } = useToast()
+  const [open, setOpen] = useState(false)
+  const [searchTerm, setSearchTerm] = useState<string>("")
+  const [options, setOptions] = useState<SelectProps[]>([])
+
+  const filteredOptions = options.filter((option) =>
+    option.title.toLowerCase().includes(searchTerm.toLowerCase())
+  )
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
     }, 2000)
+    const fetchOptions = async () => {
+      const newOptions = await fetchData<SelectProps[]>("select_options")
+      setOptions(newOptions)
+    }
+    fetchOptions()
   }, [])
 
   const tabComponents: Record<string, JSX.Element> = {
@@ -263,8 +287,71 @@ const Tabs = () => {
       </div>
     ),
     combobox: (
-      <div className="mt-5 flex justify-center">
-        <Combobox />
+      <div className="mt-5 flex gap-30 items-center justify-center">
+        <p>Contains Popover and Command component with Search featureW</p>
+        <Popover>
+          <PopoverTrigger onClick={() => setOpen(!open)}>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={open}
+              className="justify-between"
+            >
+              {searchTerm
+                ? options.find(
+                    (option) => option.value === searchTerm.toLowerCase()
+                  )?.title
+                : "Select option..."}
+              <Image
+                src={ChevronUpDownIcon}
+                alt="Chevron Up Down Icon"
+                className="opacity-50"
+              />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent isOpen={open} className="w-[200px] p-0">
+            <CommandGroup>
+              <CommandInput
+                placeholder="Search option..."
+                className="h-9"
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <CommandList>
+                {filteredOptions.length === 0 ? (
+                  <CommandEmpty>No option found.</CommandEmpty>
+                ) : (
+                  <CommandGroup>
+                    {filteredOptions.map((option) => (
+                      <CommandItem
+                        key={option.value}
+                        value={option.title}
+                        onSelect={(currentsearchTerm: string) => {
+                          setSearchTerm(
+                            currentsearchTerm === searchTerm
+                              ? ""
+                              : currentsearchTerm
+                          )
+                          setOpen(false)
+                        }}
+                      >
+                        <Image
+                          src={CheckIcon}
+                          alt="Check Icon"
+                          className={`${
+                            searchTerm.toLowerCase() === option.value
+                              ? "opacity-100"
+                              : "opacity-0"
+                          } size-5`}
+                        />
+                        {option.title}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                )}
+              </CommandList>
+            </CommandGroup>
+          </PopoverContent>
+        </Popover>
       </div>
     ),
     "button-with-toast": (
