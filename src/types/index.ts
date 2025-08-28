@@ -40,6 +40,7 @@ export type ButtonProps = {
   type?: "submit" | "reset" | "button"
   className?: string
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  role?: string
 }
 /* eslint-enable */
 
