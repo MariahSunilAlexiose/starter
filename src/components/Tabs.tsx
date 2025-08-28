@@ -4,7 +4,7 @@ import { JSX, useEffect, useState } from "react"
 
 import Image from "next/image"
 
-import { Cards, RadioGroup } from "@/containers"
+import { Cards } from "@/containers"
 import {
   CheckCircleIcon,
   CheckIcon,
@@ -52,6 +52,8 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+  RadioGroup,
+  RadioGroupItem,
   Skeleton,
   Table,
   TableBody,
@@ -103,6 +105,7 @@ const Tabs = () => {
   const [open, setOpen] = useState(false)
   const [searchTerm, setSearchTerm] = useState<string>("")
   const [options, setOptions] = useState<SelectProps[]>([])
+  const [selected, setSelected] = useState<string>("comfortable")
 
   const filteredOptions = options.filter((option) =>
     option.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -221,11 +224,24 @@ const Tabs = () => {
     ),
     radio: (
       <div className="mt-5 flex justify-center">
-        <RadioGroup />
+        <RadioGroup name="radio" value={selected} onChange={setSelected}>
+          {options.map((option) => (
+            <RadioGroupItem
+              value={option.value}
+              name="radio"
+              selectedValue={selected}
+              onChange={setSelected}
+              key={option.value}
+              className="flex items-center gap-3"
+            >
+              {option.title}
+            </RadioGroupItem>
+          ))}
+        </RadioGroup>
       </div>
     ),
     dialog: (
-      <div className="mt-5 flex justify-center">
+      <div className="mt-5 flex flex-col items-center gap-5 justify-center">
         <p>Contains Dialog with Label, Input and Checkbox component</p>
         <Dialog>
           <form>
@@ -287,8 +303,8 @@ const Tabs = () => {
       </div>
     ),
     combobox: (
-      <div className="mt-5 flex gap-30 items-center justify-center">
-        <p>Contains Popover and Command component with Search featureW</p>
+      <div className="mt-5 flex flex-col gap-5 items-center justify-center">
+        <p>Contains Popover and Command component with Search feature</p>
         <Popover>
           <PopoverTrigger onClick={() => setOpen(!open)}>
             <Button

@@ -44,7 +44,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "./Popover"
-import RadioInput from "./RadioInput"
+import { RadioGroup, RadioGroupItem } from "./RadioGroup"
 import Separator from "./Separator"
 import Skeleton from "./Skeleton"
 import Switch from "./Switch"
@@ -119,5 +119,6 @@ export {
   Input,
   Label,
   TextArea,
-  RadioInput,
+  RadioGroup,
+  RadioGroupItem,
 }
