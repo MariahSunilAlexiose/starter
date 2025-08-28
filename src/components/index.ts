@@ -23,6 +23,17 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "./Command"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogTitle,
+  DialogTrigger,
+} from "./Dialog"
 import Footer from "./Footer"
 import Header from "./Header"
 import Input from "./Input"
@@ -83,6 +94,14 @@ export {
   Combobox,
   Pagination,
   Dialog,
+  DialogTrigger,
+  DialogClose,
+  DialogContent,
+  DialogOverlay,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
   AlertDescription,
   AlertTitle,
   Alert,

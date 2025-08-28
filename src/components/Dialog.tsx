@@ -1,84 +1,190 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 
 import Image from "next/image"
 
 import { XMarkIcon } from "@/icons"
 
-import { Button, Checkbox, Input, Label } from "."
+type DialogContextType = {
+  open: boolean
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-const Dialog = () => {
-  const [clicked, setClicked] = useState<boolean>(false)
+const DialogContext = React.createContext<DialogContextType | null>(null)
+
+function Dialog({ children }: { children: React.ReactNode }) {
+  const [open, setOpen] = useState(false)
+
   return (
-    <div>
-      <div className="justify-center" onClick={() => setClicked(true)}>
-        <Button variant="outline">Edit Profile</Button>
-      </div>
-      {clicked && (
-        <div className="open:animate-in open:fade-in-0 open:zoom-in-95 open:slide-in-from-left-1/2 open:slide-in-from-top-[48%] bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg duration-200 sm:max-w-[425px] sm:rounded-lg">
-          <div
-            className="ring-offset-background open:bg-accent open:text-muted-foreground focus:ring-ring absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none"
-            onClick={() => setClicked(!clicked)}
-          >
-            <Image src={XMarkIcon} alt="Close Icon" className="h-4 w-4" />
-            <span className="sr-only">Close Icon</span>
-          </div>
-          <div className="flex flex-col space-y-1.5 text-center sm:text-left">
-            <div className="text-lg leading-none font-semibold tracking-tight">
-              Edit profile
-            </div>
-            <div className="text-muted-foreground text-sm">
-              Make changes to your profile here. Click save when you&quot;re
-              done.
-            </div>
-          </div>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
-                Name
-              </Label>
-              <Input
-                type="name"
-                placeholder="Pedro Duarte"
-                className="col-span-3"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="username" className="text-right">
-                Username
-              </Label>
-              <Input
-                type="username"
-                placeholder="@peduarte"
-                className="col-span-3"
-              />
-            </div>
-            <div className="flex flex-col items-start space-y-4 pl-24">
-              <div className="flex items-center space-x-2">
-                <Checkbox id="toggle" disabled />
-                <Label
-                  htmlFor="toggle"
-                  className="text-sm text-muted-foreground"
-                >
-                  Email notifications (disabled)
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox id="terms" defaultChecked />
-                <Label htmlFor="terms" className="text-sm">
-                  I agree to the terms and conditions
-                </Label>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
-            <Button type="submit">Save changes</Button>
-          </div>
-        </div>
-      )}
-    </div>
+    <DialogContext.Provider value={{ open, setOpen }}>
+      {children}
+    </DialogContext.Provider>
   )
 }
 
-export default Dialog
+function DialogTrigger({
+  asChild,
+  children,
+}: {
+  asChild?: boolean
+  children: React.ReactNode
+}) {
+  const context = React.useContext(DialogContext)
+  if (!context) return null
+
+  const handleClick = () => {
+    context.setOpen(true)
+  }
+
+  if (asChild && React.isValidElement(children)) {
+    const child = children as React.ReactElement<any>
+
+    const existingOnClick = child.props.onClick
+
+    return React.cloneElement(child, {
+      ...child.props,
+      onClick: (e: React.MouseEvent) => {
+        if (typeof existingOnClick === "function") {
+          existingOnClick(e)
+        }
+        handleClick()
+      },
+      "data-slot": "dialog-trigger",
+    })
+  }
+
+  return (
+    <button onClick={handleClick} data-slot="dialog-trigger">
+      {children}
+    </button>
+  )
+}
+
+function DialogClose({
+  asChild,
+  children,
+}: {
+  asChild?: boolean
+  children: React.ReactNode
+}) {
+  const context = React.useContext(DialogContext)
+  if (!context) return null
+
+  const handleClick = () => {
+    context.setOpen(false)
+  }
+
+  if (asChild && React.isValidElement(children)) {
+    const child = children as React.ReactElement<any>
+    const existingOnClick = child.props.onClick
+
+    return React.cloneElement(child, {
+      ...child.props,
+      onClick: (e: React.MouseEvent) => {
+        if (typeof existingOnClick === "function") {
+          existingOnClick(e)
+        }
+        handleClick()
+      },
+      "data-slot": "dialog-close",
+    })
+  }
+
+  return (
+    <button onClick={handleClick} data-slot="dialog-close">
+      {children}
+    </button>
+  )
+}
+
+function DialogOverlay({ className }: { className?: string }) {
+  return (
+    <div
+      data-slot="dialog-overlay"
+      className={`${className} fixed inset-0 z-50 bg-black/80 animate-fade-in`}
+    />
+  )
+}
+
+function DialogContent({
+  className,
+  children,
+}: {
+  className?: string
+  children: React.ReactNode
+}) {
+  const context = React.useContext(DialogContext)
+  if (!context || !context.open) return null
+
+  return (
+    <>
+      <DialogOverlay />
+      <div
+        data-slot="dialog-content"
+        className={`${className} fixed top-[50%] left-[50%] z-50 flex flex-col translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border bg-background p-6 shadow-lg`}
+      >
+        {children}
+        <button
+          onClick={() => context.setOpen(false)}
+          className="absolute top-4 right-4 opacity-70 transition-opacity hover:opacity-100"
+        >
+          <Image src={XMarkIcon} alt="X Mark Icon" className="size-4" />
+          <span className="sr-only">Close</span>
+        </button>
+      </div>
+    </>
+  )
+}
+
+function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="dialog-header"
+      className={`${className} flex flex-col gap-2 text-center sm:text-left`}
+      {...props}
+    />
+  )
+}
+
+function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="dialog-footer"
+      className={`${className} flex flex-col-reverse gap-2 sm:flex-row sm:justify-end`}
+      {...props}
+    />
+  )
+}
+
+function DialogTitle({ className, ...props }: React.ComponentProps<"h2">) {
+  return (
+    <h2
+      data-slot="dialog-title"
+      className={`${className} border-none text-lg leading-none font-semibold tracking-tight`}
+      {...props}
+    />
+  )
+}
+
+function DialogDescription({ className, ...props }: React.ComponentProps<"p">) {
+  return (
+    <p
+      data-slot="dialog-description"
+      className={`${className} text-muted-foreground text-sm`}
+      {...props}
+    />
+  )
+}
+
+export {
+  Dialog,
+  DialogTrigger,
+  DialogClose,
+  DialogContent,
+  DialogOverlay,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+}
