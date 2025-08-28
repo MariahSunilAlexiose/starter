@@ -44,6 +44,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "./Popover"
+import Progress from "./Progress"
 import { RadioGroup, RadioGroupItem } from "./RadioGroup"
 import Separator from "./Separator"
 import Skeleton from "./Skeleton"
@@ -63,6 +64,7 @@ import TextArea from "./TextArea"
 import Toast from "./Toast"
 
 export {
+  Progress,
   Command,
   CommandDialog,
   CommandEmpty,

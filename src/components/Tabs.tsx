@@ -52,6 +52,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+  Progress,
   RadioGroup,
   RadioGroupItem,
   Skeleton,
@@ -106,6 +107,7 @@ const Tabs = () => {
   const [searchTerm, setSearchTerm] = useState<string>("")
   const [options, setOptions] = useState<SelectProps[]>([])
   const [selected, setSelected] = useState<string>("comfortable")
+  const [progress, setProgress] = useState(13)
 
   const filteredOptions = options.filter((option) =>
     option.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -120,6 +122,8 @@ const Tabs = () => {
       setOptions(newOptions)
     }
     fetchOptions()
+    const timer = setTimeout(() => setProgress(66), 500)
+    return () => clearTimeout(timer)
   }, [])
 
   const tabComponents: Record<string, JSX.Element> = {
@@ -485,6 +489,11 @@ const Tabs = () => {
         </Badge>
       </div>
     ),
+    progress: (
+      <div className="flex items-center justify-center mt-5">
+        <Progress value={progress} className="w-[60%]" />
+      </div>
+    ),
   }
 
   useEffect(() => {
@@ -519,6 +528,7 @@ const Tabs = () => {
               "Table",
               "Badge",
               "Avatar",
+              "Progress",
             ].map((label) => (
               <TabTrigger
                 key={label}
