@@ -17,6 +17,7 @@ const Toast = ({
 }: ToastProps) => {
   return (
     <div
+      data-slot="toast"
       className={`${ToastVariants[type].styles} mb-2.5 flex justify-between rounded-md p-2.5`}
     >
       <div className="flex items-center gap-2">

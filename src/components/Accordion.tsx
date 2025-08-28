@@ -49,9 +49,8 @@ function AccordionTrigger({
   isOpen,
 }: AccordionTriggerProps) {
   return (
-    <div className="flex">
+    <div data-slot="accordion-trigger" className="flex">
       <button
-        data-slot="accordion-trigger"
         onClick={onClick}
         className={`${className} ${isOpen ? "font-bold" : "font-medium"} hover:font-bold cursor-pointer ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm  transition-all focus-visible:ring-4 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50`}
       >

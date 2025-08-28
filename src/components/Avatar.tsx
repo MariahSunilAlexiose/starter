@@ -20,7 +20,10 @@ function Avatar({
 
 function AvatarImage({ className, alt, ...props }: Omit<ImageProps, "fill">) {
   return (
-    <div className={`relative aspect-square size-full ${className}`}>
+    <div
+      data-slot="avatar-image"
+      className={`relative aspect-square size-full ${className}`}
+    >
       <Image
         data-slot="avatar-image"
         alt={alt}

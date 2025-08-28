@@ -12,7 +12,7 @@ function Checkbox({
     setChecked(defaultChecked ?? false)
   }, [defaultChecked])
   return (
-    <label className="relative inline-flex items-center">
+    <label data-slot="checkbox" className="relative inline-flex items-center">
       <input
         type="checkbox"
         data-slot="checkbox"

@@ -17,7 +17,7 @@ function Dialog({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <DialogContext.Provider value={{ open, setOpen }}>
+    <DialogContext.Provider data-slot="dialog" value={{ open, setOpen }}>
       {children}
     </DialogContext.Provider>
   )
@@ -118,7 +118,7 @@ function DialogContent({
   if (!context || !context.open) return null
 
   return (
-    <>
+    <div data-slot="dialog-portal">
       <DialogOverlay />
       <div
         data-slot="dialog-content"
@@ -133,7 +133,7 @@ function DialogContent({
           <span className="sr-only">Close</span>
         </button>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -26,7 +26,14 @@ const PaginationItem = React.forwardRef(function PaginationItem(
   { className, ...props }: React.ComponentProps<"li">,
   ref: React.Ref<HTMLLIElement>
 ) {
-  return <li ref={ref} className={className} {...props} />
+  return (
+    <li
+      data-slot="pagination-item"
+      ref={ref}
+      className={className}
+      {...props}
+    />
+  )
 })
 
 type PaginationLinkProps = {
@@ -40,6 +47,7 @@ const PaginationLink = ({
   ...props
 }: PaginationLinkProps) => (
   <Link
+    data-slot="pagination-link"
     className={`cursor-pointer px-2 py-0 ${ButtonVariants.size[size]}`}
     aria-current={isActive ? "page" : undefined}
     {...props}
@@ -48,6 +56,7 @@ const PaginationLink = ({
 
 const PaginationEllipsis = ({ ...props }: React.ComponentProps<"span">) => (
   <span
+    data-slot="pagination-ellipsis"
     aria-hidden
     className="flex h-9 w-9 items-center justify-center"
     {...props}
@@ -138,6 +147,7 @@ const Pagination = ({
     <nav
       role="navigation"
       aria-label="pagination"
+      data-slot="pagination"
       className="mx-auto flex w-full justify-center"
     >
       <ul className="flex flex-row items-center gap-1">

@@ -22,7 +22,10 @@ const Footer = () => {
     fetchOptions()
   }, [])
   return (
-    <footer className="text-foreground mx-auto mt-72 max-w-[1440px] p-10">
+    <footer
+      data-slot="footer"
+      className="text-foreground mx-auto mt-72 max-w-[1440px] p-10"
+    >
       <div className="flex justify-between gap-20 max-lg:flex-col">
         <div className="flex flex-col md:w-1/3">
           <Link href="/">
