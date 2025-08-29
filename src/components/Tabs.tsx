@@ -55,6 +55,13 @@ import {
   Progress,
   RadioGroup,
   RadioGroupItem,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
   Skeleton,
   Table,
   TableBody,
@@ -503,6 +510,25 @@ const Tabs = () => {
         <Progress value={progress} className="w-[60%]" />
       </div>
     ),
+    select: (
+      <div className="flex items-center justify-center mt-5">
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Cars</SelectLabel>
+              {options.map((option) => (
+                <SelectItem key={option.value} title={option.title}>
+                  {option.title}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
+    ),
   }
 
   useEffect(() => {
@@ -538,6 +564,7 @@ const Tabs = () => {
               "Badge",
               "Avatar",
               "Progress",
+              "Select",
             ].map((label) => (
               <TabTrigger
                 key={label}

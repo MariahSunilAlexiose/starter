@@ -46,6 +46,18 @@ import {
 } from "./Popover"
 import Progress from "./Progress"
 import { RadioGroup, RadioGroupItem } from "./RadioGroup"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from "./Select"
 import Separator from "./Separator"
 import Skeleton from "./Skeleton"
 import Switch from "./Switch"
@@ -64,6 +76,16 @@ import TextArea from "./TextArea"
 import Toast from "./Toast"
 
 export {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
   Progress,
   Command,
   CommandDialog,
