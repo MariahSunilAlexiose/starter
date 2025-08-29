@@ -63,6 +63,7 @@ import {
   SelectTrigger,
   SelectValue,
   Skeleton,
+  Slider,
   Table,
   TableBody,
   TableCaption,
@@ -116,6 +117,8 @@ const Tabs = () => {
   const [options, setOptions] = useState<SelectProps[]>([])
   const [selected, setSelected] = useState<string>("comfortable")
   const [progress, setProgress] = useState(13)
+  const [range, setRange] = useState<[number, number]>([1, 100])
+  const [value, setValue] = useState<number>(1)
 
   const filteredOptions = options.filter((option) =>
     option.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -529,6 +532,29 @@ const Tabs = () => {
         </Select>
       </div>
     ),
+    slider: (
+      <div className="flex flex-col items-center justify-center mt-5">
+        {/* Dual Range Slider */}
+        <Slider
+          defaultValue={range}
+          min={1}
+          max={100}
+          onChange={(val) => {
+            if (Array.isArray(val)) setRange(val)
+          }}
+        />
+
+        {/* Slider */}
+        <Slider
+          defaultValue={value}
+          min={1}
+          max={100}
+          onChange={(val) => {
+            if (typeof val === "number") setValue(val)
+          }}
+        />
+      </div>
+    ),
   }
 
   useEffect(() => {
@@ -565,6 +591,7 @@ const Tabs = () => {
               "Avatar",
               "Progress",
               "Select",
+              "Slider",
             ].map((label) => (
               <TabTrigger
                 key={label}

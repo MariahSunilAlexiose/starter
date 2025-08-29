@@ -84,4 +84,31 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
+
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    cursor: pointer;
+    /* position: relative;
+    z-index: 5; */
+    pointer-events: all;
+    border: 0;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    pointer-events: all;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    cursor: pointer;
+    border: 0;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    background: transparent;
+  }
 }

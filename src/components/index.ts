@@ -60,6 +60,7 @@ import {
 } from "./Select"
 import Separator from "./Separator"
 import Skeleton from "./Skeleton"
+import Slider from "./Slider"
 import Switch from "./Switch"
 import {
   Table,
@@ -76,6 +77,7 @@ import TextArea from "./TextArea"
 import Toast from "./Toast"
 
 export {
+  Slider,
   Select,
   SelectContent,
   SelectGroup,
