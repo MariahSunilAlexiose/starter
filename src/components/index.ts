@@ -9,6 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./Avatar"
 import Badge from "./Badge"
 import Banner from "./Banner"
 import Button from "./Button"
+import Calendar from "./Calendar"
 import Card from "./Card"
 import Checkbox from "./Checkbox"
 import {
@@ -77,6 +78,7 @@ import TextArea from "./TextArea"
 import Toast from "./Toast"
 
 export {
+  Calendar,
   Slider,
   Select,
   SelectContent,
