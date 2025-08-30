@@ -8,6 +8,7 @@ import { Cards } from "@/containers"
 import {
   CheckCircleIcon,
   CheckIcon,
+  ChevronDownIcon,
   ChevronUpDownIcon,
   ExclamationTriangleIcon,
 } from "@/icons"
@@ -33,6 +34,7 @@ import {
   AvatarImage,
   Badge,
   Button,
+  Calendar,
   Checkbox,
   CommandEmpty,
   CommandGroup,
@@ -119,6 +121,7 @@ const Tabs = () => {
   const [progress, setProgress] = useState(13)
   const [range, setRange] = useState<[number, number]>([1, 100])
   const [value, setValue] = useState<number>(1)
+  const [date, setDate] = useState<Date>(new Date())
 
   const filteredOptions = options.filter((option) =>
     option.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -555,6 +558,43 @@ const Tabs = () => {
         />
       </div>
     ),
+    "date-picker": (
+      <div className="flex flex-col gap-3 items-center justify-center mt-5">
+        <Label htmlFor="date" className="px-1">
+          Date of birth
+        </Label>
+        <Popover>
+          <PopoverTrigger onClick={() => setOpen(!open)}>
+            <Button
+              variant="outline"
+              className="w-48 justify-between font-normal"
+            >
+              {date ? date.toLocaleDateString() : "Select date"}
+              <Image
+                src={ChevronDownIcon}
+                alt="Chevron Down Icon"
+                className="size-4"
+              />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent
+            isOpen={open}
+            className="overflow-hidden p-0 w-96"
+            align="start"
+          >
+            <Calendar
+              mode="single"
+              selected={date}
+              captionLayout="dropdown"
+              onSelect={(date: Date) => {
+                setDate(date)
+                setOpen(false)
+              }}
+            />
+          </PopoverContent>
+        </Popover>
+      </div>
+    ),
   }
 
   useEffect(() => {
@@ -592,6 +632,7 @@ const Tabs = () => {
               "Progress",
               "Select",
               "Slider",
+              "Date Picker",
             ].map((label) => (
               <TabTrigger
                 key={label}
