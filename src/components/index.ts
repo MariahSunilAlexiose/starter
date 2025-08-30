@@ -10,7 +10,14 @@ import Badge from "./Badge"
 import Banner from "./Banner"
 import Button from "./Button"
 import Calendar from "./Calendar"
-import Card from "./Card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./Card"
 import Checkbox from "./Checkbox"
 import {
   Command,
@@ -134,6 +141,11 @@ export {
   Checkbox,
   Switch,
   Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
   Accordion,
   AccordionContent,
   AccordionItem,

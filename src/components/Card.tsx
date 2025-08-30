@@ -1,36 +1,63 @@
-import { Avatar, AvatarImage } from "./Avatar"
-import Badge from "./Badge"
-import Button from "./Button"
+import React from "react"
 
-type Props = {
-  title: string
-  image: string
-  description: string
-  content: string
-  footer: boolean
-}
-
-const Card = ({ title, image, description, content, footer }: Props) => {
+function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div className="bg-card text-card-foreground flex flex-col justify-between rounded-xl border shadow-sm">
-      <div className="flex flex-row items-center gap-2 space-y-1.5 p-6">
-        <Avatar className="size-12">
-          <AvatarImage src={`/assets/images/${image}`} alt={title} />
-        </Avatar>
-        <div>
-          <h3 className="leading-none font-semibold tracking-tight">{title}</h3>
-          <p className="text-muted-foreground text-sm">{description}</p>
-        </div>
-      </div>
-      <div className="p-6 pt-0">
-        <p>{content}</p>
-      </div>
-      <div className="flex items-center justify-between p-6 pt-0">
-        <Button>View Recipes</Button>
-        {footer && <Badge variant="accent">Vegan!</Badge>}
-      </div>
-    </div>
+    <div
+      data-slot="card"
+      className={`${className} bg-card text-card-foreground rounded-xl border shadow-sm`}
+      {...props}
+    />
   )
 }
 
-export default Card
+function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-header"
+      className={`${className} flex flex-col gap-1.5 p-6`}
+      {...props}
+    />
+  )
+}
+
+function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <h3
+      data-slot="card-title"
+      className={`${className} leading-none font-semibold tracking-tight`}
+      {...props}
+    />
+  )
+}
+
+function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-description"
+      className={`${className} text-muted-foreground text-sm`}
+      {...props}
+    />
+  )
+}
+
+function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-content"
+      className={`${className} p-6 pt-0`}
+      {...props}
+    />
+  )
+}
+
+function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={`${className} flex items-center p-6 pt-0`}
+      {...props}
+    />
+  )
+}
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
