@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 
 import "../styles/globals.css"
 
-import { Banner, Footer, Header } from "@/components"
-import { Toasts } from "@/containers"
+import { Banner, Footer } from "@/components"
+import { Navbar, Toasts } from "@/containers"
 import { ThemeProvider, ToastProvider } from "@/providers"
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function RootLayout({
       <ToastProvider>
         <html lang="en">
           <body className="bg-background text-foreground relative">
-            <Header />
+            <Navbar />
             <Banner
               title="GeneriCon 2023"
               description="Join us in Denver from June 7 &ndash; 9 to see what's coming next."

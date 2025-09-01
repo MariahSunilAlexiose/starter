@@ -42,7 +42,6 @@ import {
   DialogTrigger,
 } from "./Dialog"
 import Footer from "./Footer"
-import Header from "./Header"
 import Input from "./Input"
 import Label from "./Label"
 import Pagination from "./Pagination"
@@ -123,7 +122,6 @@ export {
   Toast,
   Footer,
   Banner,
-  Header,
   Tabs,
   Pagination,
   Dialog,
