@@ -7,7 +7,6 @@ import Image from "next/image"
 import {
   AccordionContainer,
   Cards,
-  ComboboxContainer,
   DialogContainer,
   ProfileSettings,
   TeamProjectTracker,
@@ -107,7 +106,6 @@ const Tabs = () => {
         <DialogContainer />,
       </div>
     ),
-    combobox: <ComboboxContainer />,
     "profile-settings": <ProfileSettings />,
     "team-project-tracker": <TeamProjectTracker />,
   }
