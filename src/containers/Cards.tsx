@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 
 import {
   Avatar,
+  AvatarFallback,
   AvatarImage,
   Badge,
   Button,
@@ -19,7 +20,7 @@ import { fetchData } from "@/scripts/useFetchData"
 import { RecipeProps } from "@/types"
 import { useItemsPerPage } from "@/utils"
 
-function Cards() {
+const Cards = () => {
   const [isClient, setIsClient] = useState(false)
   const [items, setItems] = useState<RecipeProps[]>([])
   const [currentPage, setCurrentPage] = useState<number>(1)
@@ -51,16 +52,30 @@ function Cards() {
                       src={`/assets/images/${item.image}`}
                       alt={item.title}
                     />
+                    <AvatarFallback>
+                      {item.title
+                        .split(" ")
+                        .map((word) => word[0].toUpperCase())
+                        .join("")}
+                    </AvatarFallback>
                   </Avatar>
-                  <div className="flex flex-col gap-1">
-                    <CardTitle>{item.title}</CardTitle>
-                    <CardDescription>{item.description}</CardDescription>
+                  <div className="flex flex-col gap-1 w-full">
+                    <div className="flex justify-between items-center">
+                      <CardTitle>{item.title}</CardTitle>
+                      <Badge
+                        className="h-5 min-w-5 rounded-full px-1 tabular-nums"
+                        variant="outline"
+                      >
+                        {item.cookTime}
+                      </Badge>
+                    </div>
+                    <CardDescription>{item.chefNote}</CardDescription>
                   </div>
                 </CardHeader>
                 <CardContent>{item.content}</CardContent>
                 <CardFooter className="justify-between gap-2">
                   <Button>View Recipes</Button>
-                  {item.vegan && <Badge variant="accent">Vegan!</Badge>}
+                  {item.vegan && <Badge variant="primary">Vegan!</Badge>}
                 </CardFooter>
               </Card>
             ))}

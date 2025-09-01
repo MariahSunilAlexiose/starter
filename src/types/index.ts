@@ -4,9 +4,10 @@ export type RecipeProps = {
   id: string
   title: string
   image: string
-  description: string
+  cookTime: string
   content: string
   vegan: boolean
+  chefNote: string
 }
 
 export type RadioProps = {
