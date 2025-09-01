@@ -1,9 +1,6 @@
-import React from "react"
+import { ComponentProps } from "react"
 
-const TableHeader = ({
-  className,
-  ...props
-}: React.ComponentProps<"thead">) => {
+const TableHeader = ({ className, ...props }: ComponentProps<"thead">) => {
   return (
     <thead
       data-slot="table-header"
@@ -13,7 +10,7 @@ const TableHeader = ({
   )
 }
 
-const TableBody = ({ className, ...props }: React.ComponentProps<"tbody">) => {
+const TableBody = ({ className, ...props }: ComponentProps<"tbody">) => {
   return (
     <tbody
       data-slot="table-body"
@@ -23,10 +20,7 @@ const TableBody = ({ className, ...props }: React.ComponentProps<"tbody">) => {
   )
 }
 
-const TableFooter = ({
-  className,
-  ...props
-}: React.ComponentProps<"tfoot">) => {
+const TableFooter = ({ className, ...props }: ComponentProps<"tfoot">) => {
   return (
     <tfoot
       data-slot="table-footer"
@@ -36,7 +30,7 @@ const TableFooter = ({
   )
 }
 
-const TableRow = ({ className, ...props }: React.ComponentProps<"tr">) => {
+const TableRow = ({ className, ...props }: ComponentProps<"tr">) => {
   return (
     <tr
       data-slot="table-row"
@@ -46,7 +40,7 @@ const TableRow = ({ className, ...props }: React.ComponentProps<"tr">) => {
   )
 }
 
-const TableHead = ({ className, ...props }: React.ComponentProps<"th">) => {
+const TableHead = ({ className, ...props }: ComponentProps<"th">) => {
   return (
     <th
       data-slot="table-head"
@@ -56,7 +50,7 @@ const TableHead = ({ className, ...props }: React.ComponentProps<"th">) => {
   )
 }
 
-const TableCell = ({ className, ...props }: React.ComponentProps<"td">) => {
+const TableCell = ({ className, ...props }: ComponentProps<"td">) => {
   return (
     <td
       data-slot="table-cell"
@@ -66,10 +60,7 @@ const TableCell = ({ className, ...props }: React.ComponentProps<"td">) => {
   )
 }
 
-const TableCaption = ({
-  className,
-  ...props
-}: React.ComponentProps<"caption">) => {
+const TableCaption = ({ className, ...props }: ComponentProps<"caption">) => {
   return (
     <caption
       data-slot="table-caption"
@@ -79,7 +70,7 @@ const TableCaption = ({
   )
 }
 
-const Table = ({ className, ...props }: React.ComponentProps<"table">) => {
+const Table = ({ className, ...props }: ComponentProps<"table">) => {
   return (
     <div
       data-slot="table-container"

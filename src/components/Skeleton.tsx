@@ -1,8 +1,6 @@
-type Props = {
-  className: string
-}
+import { ComponentProps } from "react"
 
-const Skeleton = ({ className, ...props }: Props) => {
+const Skeleton = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="skeleton"

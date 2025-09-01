@@ -1,6 +1,17 @@
 "use client"
 
-import React, { useState } from "react"
+import {
+  cloneElement,
+  ComponentProps,
+  createContext,
+  Dispatch,
+  isValidElement,
+  ReactElement,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react"
 
 import Image from "next/image"
 
@@ -8,12 +19,12 @@ import { XMarkIcon } from "@/icons"
 
 type DialogContextType = {
   open: boolean
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setOpen: Dispatch<SetStateAction<boolean>>
 }
 
-const DialogContext = React.createContext<DialogContextType | null>(null)
+const DialogContext = createContext<DialogContextType | null>(null)
 
-function Dialog({ children }: { children: React.ReactNode }) {
+const Dialog = ({ children }: ComponentProps<"div">) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -23,28 +34,28 @@ function Dialog({ children }: { children: React.ReactNode }) {
   )
 }
 
-function DialogTrigger({
+const DialogTrigger = ({
   asChild,
   children,
 }: {
   asChild?: boolean
-  children: React.ReactNode
-}) {
-  const context = React.useContext(DialogContext)
+  children: ReactNode
+}) => {
+  const context = useContext(DialogContext)
   if (!context) return null
 
   const handleClick = () => {
     context.setOpen(true)
   }
 
-  if (asChild && React.isValidElement(children)) {
-    const child = children as React.ReactElement<any>
+  if (asChild && isValidElement(children)) {
+    const child = children as ReactElement<any>
 
     const existingOnClick = child.props.onClick
 
-    return React.cloneElement(child, {
+    return cloneElement(child, {
       ...child.props,
-      onClick: (e: React.MouseEvent) => {
+      onClick: (e: MouseEvent) => {
         if (typeof existingOnClick === "function") {
           existingOnClick(e)
         }
@@ -61,27 +72,27 @@ function DialogTrigger({
   )
 }
 
-function DialogClose({
+const DialogClose = ({
   asChild,
   children,
 }: {
   asChild?: boolean
-  children: React.ReactNode
-}) {
-  const context = React.useContext(DialogContext)
+  children: ReactNode
+}) => {
+  const context = useContext(DialogContext)
   if (!context) return null
 
   const handleClick = () => {
     context.setOpen(false)
   }
 
-  if (asChild && React.isValidElement(children)) {
-    const child = children as React.ReactElement<any>
+  if (asChild && isValidElement(children)) {
+    const child = children as ReactElement<any>
     const existingOnClick = child.props.onClick
 
-    return React.cloneElement(child, {
+    return cloneElement(child, {
       ...child.props,
-      onClick: (e: React.MouseEvent) => {
+      onClick: (e: MouseEvent) => {
         if (typeof existingOnClick === "function") {
           existingOnClick(e)
         }
@@ -98,7 +109,7 @@ function DialogClose({
   )
 }
 
-function DialogOverlay({ className }: { className?: string }) {
+const DialogOverlay = ({ className }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="dialog-overlay"
@@ -107,14 +118,8 @@ function DialogOverlay({ className }: { className?: string }) {
   )
 }
 
-function DialogContent({
-  className,
-  children,
-}: {
-  className?: string
-  children: React.ReactNode
-}) {
-  const context = React.useContext(DialogContext)
+const DialogContent = ({ className, children }: ComponentProps<"div">) => {
+  const context = useContext(DialogContext)
   if (!context || !context.open) return null
 
   return (
@@ -137,7 +142,7 @@ function DialogContent({
   )
 }
 
-function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
+const DialogHeader = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="dialog-header"
@@ -147,7 +152,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
+const DialogFooter = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="dialog-footer"
@@ -157,7 +162,7 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function DialogTitle({ className, ...props }: React.ComponentProps<"h2">) {
+const DialogTitle = ({ className, ...props }: ComponentProps<"h2">) => {
   return (
     <h2
       data-slot="dialog-title"
@@ -167,7 +172,7 @@ function DialogTitle({ className, ...props }: React.ComponentProps<"h2">) {
   )
 }
 
-function DialogDescription({ className, ...props }: React.ComponentProps<"p">) {
+const DialogDescription = ({ className, ...props }: ComponentProps<"p">) => {
   return (
     <p
       data-slot="dialog-description"

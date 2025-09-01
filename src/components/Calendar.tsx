@@ -14,7 +14,7 @@ import {
   startOfWeek,
   subMonths,
 } from "date-fns"
-import React, { JSX, useState } from "react"
+import { ChangeEvent, JSX, useState } from "react"
 
 import Image from "next/image"
 
@@ -22,20 +22,17 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@/icons"
 
 import Button from "./Button"
 
-type CalendarProps = {
-  mode?: "single"
-  selected?: Date
-  // eslint-disable-next-line no-unused-vars
-  onSelect?: (date: Date) => void
-  className?: string
-  captionLayout?: "dropdown" | "buttons"
-}
-
-const Calendar: React.FC<CalendarProps> = ({
+const Calendar = ({
   mode = "single",
   selected,
   onSelect,
-  className = "",
+  className,
+}: {
+  mode?: "single"
+  selected?: Date
+  onSelect?: (date: Date) => void // eslint-disable-line no-unused-vars
+  className?: string
+  captionLayout?: "dropdown" | "buttons"
 }) => {
   const [currentDate, setCurrentDate] = useState<Date>(selected || new Date())
 
@@ -47,11 +44,11 @@ const Calendar: React.FC<CalendarProps> = ({
     (_, i) => getYear(new Date()) - 50 + i
   )
 
-  const handleMonthChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleMonthChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setCurrentDate(new Date(getYear(currentDate), parseInt(e.target.value), 1))
   }
 
-  const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleYearChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setCurrentDate(new Date(parseInt(e.target.value), getMonth(currentDate), 1))
   }
 

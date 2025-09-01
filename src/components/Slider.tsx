@@ -1,18 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { ChangeEvent, useState } from "react"
 
-type SliderProps = {
-  className?: string
-  value?: number | [number, number]
-  defaultValue?: number | [number, number]
-  min?: number
-  max?: number
-  step?: number
-  onChange?: (value: number | [number, number]) => void // eslint-disable-line no-unused-vars
-}
-
-function Slider({
+const Slider = ({
   className,
   value,
   defaultValue,
@@ -20,7 +10,15 @@ function Slider({
   max = 100,
   step = 1,
   onChange,
-}: SliderProps) {
+}: {
+  className?: string
+  value?: number | [number, number]
+  defaultValue?: number | [number, number]
+  min?: number
+  max?: number
+  step?: number
+  onChange?: (value: number | [number, number]) => void // eslint-disable-line no-unused-vars
+}) => {
   const isRange = Array.isArray(defaultValue ?? value)
   const [internalValue, setInternalValue] = useState(
     defaultValue ?? (isRange ? [min, max] : min)
@@ -30,7 +28,7 @@ function Slider({
   const currentValue = isControlled ? value : internalValue
 
   const handleChange =
-    (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    (index: number) => (e: ChangeEvent<HTMLInputElement>) => {
       const newVal = Number(e.target.value)
       if (isRange) {
         const newRange = [...(currentValue as [number, number])]

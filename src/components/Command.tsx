@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import { ComponentProps, InputHTMLAttributes } from "react"
 
 import Image from "next/image"
 
@@ -14,13 +14,7 @@ import {
   DialogTitle,
 } from "./Dialog"
 
-function Command({
-  className,
-  children,
-}: {
-  className?: string
-  children: React.ReactNode
-}) {
+const Command = ({ className, children }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="command"
@@ -31,15 +25,15 @@ function Command({
   )
 }
 
-function CommandDialog({
+const CommandDialog = ({
   title = "Command Palette",
   description = "Search for a command to run...",
   children,
   ...props
-}: React.ComponentProps<typeof Dialog> & {
+}: ComponentProps<typeof Dialog> & {
   title?: string
   description?: string
-}) {
+}) => {
   return (
     <Dialog {...props}>
       <DialogHeader className="sr-only">
@@ -55,12 +49,12 @@ function CommandDialog({
   )
 }
 
-function CommandInput({
+const CommandInput = ({
   className,
   value,
   onChange,
   ...props
-}: React.InputHTMLAttributes<HTMLInputElement>) {
+}: InputHTMLAttributes<HTMLInputElement>) => {
   return (
     <div
       data-slot="command-input-wrapper"
@@ -82,13 +76,7 @@ function CommandInput({
   )
 }
 
-function CommandList({
-  className,
-  children,
-}: {
-  className?: string
-  children: React.ReactNode
-}) {
+const CommandList = ({ className, children }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="command-list"
@@ -99,7 +87,7 @@ function CommandList({
   )
 }
 
-function CommandEmpty({ children }: { children: React.ReactNode }) {
+const CommandEmpty = ({ children }: ComponentProps<"div">) => {
   return (
     <div data-slot="command-empty" className="py-6 text-center text-sm">
       {children}
@@ -107,15 +95,13 @@ function CommandEmpty({ children }: { children: React.ReactNode }) {
   )
 }
 
-function CommandGroup({
+const CommandGroup = ({
   heading,
   className,
   children,
-}: {
+}: ComponentProps<"div"> & {
   heading?: string
-  className?: string
-  children: React.ReactNode
-}) {
+}) => {
   return (
     <div
       data-slot="command-group"
@@ -134,7 +120,7 @@ function CommandGroup({
   )
 }
 
-function CommandSeparator({ className }: { className?: string }) {
+const CommandSeparator = ({ className }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="command-separator"
@@ -143,25 +129,23 @@ function CommandSeparator({ className }: { className?: string }) {
   )
 }
 
-function CommandItem({
+const CommandItem = ({
   className,
   children,
   onClick,
-  onSelect,
+  onItemSelect,
   value,
   disabled,
-}: {
-  className?: string
-  children: React.ReactNode
+}: ComponentProps<"div"> & {
   onClick?: () => void
-  onSelect?: (value: string) => void // eslint-disable-line no-unused-vars
+  onItemSelect?: (value: string) => void // eslint-disable-line no-unused-vars
   value?: string
   disabled?: boolean
-}) {
+}) => {
   const handleClick = () => {
     if (disabled) return
     if (onClick) onClick()
-    if (onSelect && value !== undefined) onSelect(value)
+    if (onItemSelect && value !== undefined) onItemSelect(value)
   }
 
   return (
@@ -177,13 +161,7 @@ function CommandItem({
   )
 }
 
-function CommandShortcut({
-  className,
-  children,
-}: {
-  className?: string
-  children: React.ReactNode
-}) {
+const CommandShortcut = ({ className, children }: ComponentProps<"div">) => {
   return (
     <span
       data-slot="command-shortcut"

@@ -1,10 +1,6 @@
-type Props = {
-  type: string
-  placeholder: string
-  className?: string
-}
+import { ComponentProps } from "react"
 
-const Input = ({ type, placeholder, className }: Props) => {
+const Input = ({ type, placeholder, className }: ComponentProps<"input">) => {
   return (
     <input
       data-slot="input"

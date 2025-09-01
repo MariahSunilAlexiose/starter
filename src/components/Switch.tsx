@@ -1,13 +1,16 @@
 import Image, { StaticImageData } from "next/image"
 
-type Props = {
+const Switch = ({
+  clickFn,
+  expr,
+  img1,
+  img2,
+}: {
   clickFn: () => void
   expr: boolean
   img1?: StaticImageData
   img2?: StaticImageData
-}
-
-const Switch = ({ clickFn, expr, img1, img2 }: Props) => {
+}) => {
   return (
     <button
       onClick={clickFn}

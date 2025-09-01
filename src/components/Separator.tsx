@@ -1,9 +1,11 @@
-type Props = {
-  orientation?: "horizontal" | "vertical"
-  className?: string
-}
+import { ComponentProps } from "react"
 
-const Separator = ({ orientation = "horizontal", className }: Props) => {
+const Separator = ({
+  orientation = "horizontal",
+  className,
+}: ComponentProps<"div"> & {
+  orientation?: "horizontal" | "vertical"
+}) => {
   return (
     <div
       data-slot="separator"

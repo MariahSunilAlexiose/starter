@@ -1,10 +1,6 @@
-type Props = {
-  children: React.ReactNode
-  className?: string
-  htmlFor: string
-}
+import { ComponentProps } from "react"
 
-const Label = ({ children, className, htmlFor }: Props) => {
+const Label = ({ children, className, htmlFor }: ComponentProps<"label">) => {
   return (
     <label
       data-slot="label"

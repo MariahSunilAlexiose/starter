@@ -1,8 +1,4 @@
-type Props = {
-  variant?: "default" | "primary" | "accent" | "destructive" | "outline"
-  children: React.ReactNode
-  className?: string
-}
+import { ComponentProps } from "react"
 
 const variants = {
   default:
@@ -17,11 +13,17 @@ const variants = {
     "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
 }
 
-const Badge = ({ variant = "default", children, className }: Props) => {
+const Badge = ({
+  variant = "default",
+  children,
+  className,
+}: ComponentProps<"div"> & {
+  variant?: "default" | "primary" | "accent" | "destructive" | "outline"
+}) => {
   return (
     <div
       data-slot="badge"
-      className={`${className} ${variants[variant]} inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-semibold w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 focus-visible:ring-4 focus-visible:outline-1 aria-invalid:focus-visible:ring-0 transition-[color,box-shadow]`}
+      className={`${className} ${variants[variant]} cursor-pointer inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-semibold w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 focus-visible:ring-4 focus-visible:outline-1 aria-invalid:focus-visible:ring-0 transition-[color,box-shadow]`}
     >
       {children}
     </div>

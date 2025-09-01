@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import { ComponentProps, forwardRef, Ref } from "react"
 
 import Image from "next/image"
 import Link from "next/link"
@@ -13,18 +13,9 @@ import {
 } from "@/icons"
 import { ButtonProps } from "@/types"
 
-/* eslint-disable */
-type Props = {
-  totalItems: number
-  itemsPerPage: number
-  currentPage: number
-  setCurrentPage: (currentPage: number) => void
-}
-/* eslint-enable */
-
-const PaginationItem = React.forwardRef(function PaginationItem(
-  { className, ...props }: React.ComponentProps<"li">,
-  ref: React.Ref<HTMLLIElement>
+const PaginationItem = forwardRef(function PaginationItem(
+  { className, ...props }: ComponentProps<"li">,
+  ref: Ref<HTMLLIElement>
 ) {
   return (
     <li
@@ -36,16 +27,14 @@ const PaginationItem = React.forwardRef(function PaginationItem(
   )
 })
 
-type PaginationLinkProps = {
-  isActive?: boolean
-} & Pick<ButtonProps, "size"> &
-  React.ComponentProps<typeof Link>
-
 const PaginationLink = ({
   isActive,
   size = "icon",
   ...props
-}: PaginationLinkProps) => (
+}: {
+  isActive?: boolean
+} & Pick<ButtonProps, "size"> &
+  ComponentProps<typeof Link>) => (
   <Link
     data-slot="pagination-link"
     className={`cursor-pointer px-2 py-0 ${ButtonVariants.size[size]}`}
@@ -54,7 +43,7 @@ const PaginationLink = ({
   />
 )
 
-const PaginationEllipsis = ({ ...props }: React.ComponentProps<"span">) => (
+const PaginationEllipsis = ({ ...props }: ComponentProps<"span">) => (
   <span
     data-slot="pagination-ellipsis"
     aria-hidden
@@ -75,7 +64,12 @@ const Pagination = ({
   itemsPerPage,
   currentPage,
   setCurrentPage,
-}: Props) => {
+}: {
+  totalItems: number
+  itemsPerPage: number
+  currentPage: number
+  setCurrentPage: (currentPage: number) => void // eslint-disable-line no-unused-vars
+}) => {
   const pageNumbers = []
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i)

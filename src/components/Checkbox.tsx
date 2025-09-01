@@ -1,12 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { InputHTMLAttributes, useEffect, useState } from "react"
 
-function Checkbox({
+const Checkbox = ({
   className,
   defaultChecked,
   ...props
-}: React.InputHTMLAttributes<HTMLInputElement>) {
+}: InputHTMLAttributes<HTMLInputElement>) => {
   const [checked, setChecked] = useState<boolean>(false)
   useEffect(() => {
     setChecked(defaultChecked ?? false)

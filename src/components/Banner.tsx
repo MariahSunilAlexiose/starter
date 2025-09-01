@@ -8,13 +8,15 @@ import { XMarkIcon } from "@/icons"
 
 import { Button } from "."
 
-type Props = {
+const Banner = ({
+  title,
+  description,
+  callToActionText,
+}: {
   title: string
   description: string
   callToActionText?: string
-}
-
-const Banner = ({ title, description, callToActionText }: Props) => {
+}) => {
   const [present, setPresent] = useState<Boolean>(true)
   return (
     <>

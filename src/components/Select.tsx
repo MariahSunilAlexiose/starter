@@ -1,14 +1,20 @@
 "use client"
 
-import React, { createContext, useContext, useRef, useState } from "react"
+import {
+  ComponentProps,
+  createContext,
+  useContext,
+  useRef,
+  useState,
+} from "react"
 
 import Image from "next/image"
 
-import { CheckIcon, ChevronDownIcon, ChevronUpDownIcon } from "@/icons"
+import { ChevronDownIcon, ChevronUpDownIcon } from "@/icons"
 
 const SelectContext = createContext<any>(null)
 
-function Select({ children }: { children: React.ReactNode }) {
+const Select = ({ children, className }: ComponentProps<"div">) => {
   const [open, setOpen] = useState(false)
   const [selected, setSelected] = useState<string | null>(null)
   const triggerRef = useRef<HTMLDivElement>(null)
@@ -17,38 +23,28 @@ function Select({ children }: { children: React.ReactNode }) {
     <SelectContext.Provider
       value={{ open, setOpen, selected, setSelected, triggerRef }}
     >
-      <div className="relative inline-block">{children}</div>
+      <div className={`${className} relative inline-block`}>{children}</div>
     </SelectContext.Provider>
   )
 }
 
-function SelectTrigger({
-  className,
-  children,
-}: {
-  className?: string
-  children: React.ReactNode
-}) {
+const SelectTrigger = ({ className, children }: ComponentProps<"div">) => {
   const { open, setOpen, triggerRef } = useContext(SelectContext)
 
   return (
     <div
       ref={triggerRef}
       data-slot="select-trigger"
-      className={`${className} border px-3 py-2 rounded-md flex items-center justify-between cursor-pointer`}
+      className={`${className} px-4 py-2 whitespace-nowrap rounded-md transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 ring-ring/10 dark:ring-ring/20 dark:outline-ring/40 outline-ring/50 focus-visible:ring-4 focus-visible:outline-1 aria-invalid:focus-visible:ring-0 border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground w-48 font-normal border gap-2 text-sm inline-flex items-center justify-between cursor-pointer`}
       onClick={() => setOpen(!open)}
     >
       {children}
-      <Image
-        src={ChevronDownIcon}
-        alt="Chevron Down Icon"
-        className="size-4 opacity-50"
-      />
+      <Image src={ChevronDownIcon} alt="Chevron Down Icon" className="size-4" />
     </div>
   )
 }
 
-function SelectValue({ placeholder }: { placeholder?: string }) {
+const SelectValue = ({ placeholder }: { placeholder?: string }) => {
   const { selected } = useContext(SelectContext)
   return (
     <div data-slot="select-value" className="truncate">
@@ -57,7 +53,7 @@ function SelectValue({ placeholder }: { placeholder?: string }) {
   )
 }
 
-function SelectContent({ children }: { children: React.ReactNode }) {
+const SelectContent = ({ children }: ComponentProps<"div">) => {
   const { open, triggerRef } = useContext(SelectContext)
 
   if (!open) return null
@@ -65,7 +61,7 @@ function SelectContent({ children }: { children: React.ReactNode }) {
   return (
     <div
       data-slot="select-content"
-      className="absolute z-10 mt-1 w-full bg-white border rounded-md shadow-lg"
+      className="absolute z-10 mt-1 bg-white border rounded-md shadow-lg"
       style={{ minWidth: triggerRef.current?.offsetWidth }}
     >
       {children}
@@ -73,11 +69,11 @@ function SelectContent({ children }: { children: React.ReactNode }) {
   )
 }
 
-function SelectGroup({ children }: { children: React.ReactNode }) {
+const SelectGroup = ({ children }: ComponentProps<"div">) => {
   return <div data-slot="select-group">{children}</div>
 }
 
-function SelectLabel({ children }: { children: React.ReactNode }) {
+const SelectLabel = ({ children }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="select-label"
@@ -88,15 +84,13 @@ function SelectLabel({ children }: { children: React.ReactNode }) {
   )
 }
 
-function SelectItem({
+const SelectItem = ({
   title,
   children,
-}: {
+}: ComponentProps<"div"> & {
   title: string
-  children: React.ReactNode
-}) {
-  const { selected, setSelected, setOpen } = useContext(SelectContext)
-  const isSelected = selected === title
+}) => {
+  const { setSelected, setOpen } = useContext(SelectContext)
 
   return (
     <div
@@ -109,14 +103,11 @@ function SelectItem({
       }}
     >
       <div>{children}</div>
-      {isSelected && (
-        <Image src={CheckIcon} alt="Check Icon" className="size-4" />
-      )}
     </div>
   )
 }
 
-function SelectScrollUpButton() {
+const SelectScrollUpButton = () => {
   return (
     <div
       data-slot="select-scroll-up-button"
@@ -127,7 +118,7 @@ function SelectScrollUpButton() {
   )
 }
 
-function SelectScrollDownButton() {
+const SelectScrollDownButton = () => {
   return (
     <div
       data-slot="select-scroll-down-button"
@@ -138,7 +129,7 @@ function SelectScrollDownButton() {
   )
 }
 
-function SelectSeparator() {
+const SelectSeparator = () => {
   return <div data-slot="select-separator" className="h-px bg-gray-200 my-1" />
 }
 

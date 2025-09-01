@@ -1,17 +1,12 @@
 "use client"
 
-import React from "react"
+import { ComponentProps } from "react"
 
 import Image from "next/image"
 
 import { ChevronDownIcon } from "@/icons"
 
-type AccordionProps = {
-  children: React.ReactNode
-  className?: string
-}
-
-function Accordion({ children, className }: AccordionProps) {
+const Accordion = ({ children, className }: ComponentProps<"div">) => {
   return (
     <div data-slot="accordion" className={className}>
       {children}
@@ -19,15 +14,11 @@ function Accordion({ children, className }: AccordionProps) {
   )
 }
 
-type AccordionItemProps = {
-  children: React.ReactNode
-  className?: string
-}
-
-function AccordionItem({ children, className }: AccordionItemProps) {
+const AccordionItem = ({ children, className, id }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="accordion-item"
+      id={id}
       className={`${className} border-b last:border-b-0`}
     >
       {children}
@@ -35,19 +26,15 @@ function AccordionItem({ children, className }: AccordionItemProps) {
   )
 }
 
-type AccordionTriggerProps = {
-  children: React.ReactNode
-  className?: string
-  onClick?: () => void
-  isOpen: boolean
-}
-
-function AccordionTrigger({
+const AccordionTrigger = ({
   children,
   className,
   onClick,
   isOpen,
-}: AccordionTriggerProps) {
+}: ComponentProps<"div"> & {
+  onClick?: () => void
+  isOpen: boolean
+}) => {
   return (
     <div data-slot="accordion-trigger" className="flex">
       <button
@@ -65,17 +52,13 @@ function AccordionTrigger({
   )
 }
 
-type AccordionContentProps = {
-  children: React.ReactNode
-  className?: string
-  isOpen: boolean
-}
-
-function AccordionContent({
+const AccordionContent = ({
   children,
   className,
   isOpen,
-}: AccordionContentProps) {
+}: ComponentProps<"div"> & {
+  isOpen: boolean
+}) => {
   return (
     <div
       data-slot="accordion-content"

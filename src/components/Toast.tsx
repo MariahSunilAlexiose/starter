@@ -4,7 +4,6 @@ import Image from "next/image"
 
 import { ToastVariants } from "@/constants"
 import { XMarkIcon } from "@/icons"
-import { ToastProps } from "@/types"
 
 import { Button } from "."
 
@@ -14,7 +13,13 @@ const Toast = ({
   title,
   description,
   removeToast,
-}: ToastProps) => {
+}: {
+  id: string
+  type: "success" | "error" | "info"
+  title: string
+  description: string
+  removeToast: (id: string) => void // eslint-disable-line no-unused-vars
+}) => {
   return (
     <div
       data-slot="toast"

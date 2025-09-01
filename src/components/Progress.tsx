@@ -1,11 +1,12 @@
-import React from "react"
+import { ComponentProps } from "react"
 
-type ProgressProps = {
-  className: string
+const Progress = ({
+  className,
+  value,
+  ...props
+}: ComponentProps<"div"> & {
   value: number
-}
-
-const Progress = ({ className, value, ...props }: ProgressProps) => {
+}) => {
   return (
     <div
       data-slot="progress"

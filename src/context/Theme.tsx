@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext } from "react"
+import { createContext, Dispatch, SetStateAction } from "react"
 
 /* eslint-disable no-unused-vars */
 export enum Theme {
@@ -13,7 +13,7 @@ export const { light, dark } = Theme
 
 type ThemeContextType = {
   theme: Theme
-  setTheme: React.Dispatch<React.SetStateAction<Theme>>
+  setTheme: Dispatch<SetStateAction<Theme>>
 }
 
 export const ThemeContext = createContext<ThemeContextType>({

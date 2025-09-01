@@ -1,31 +1,40 @@
-import React from "react"
+import {
+  ChangeEvent,
+  Children,
+  cloneElement,
+  ComponentProps,
+  isValidElement,
+} from "react"
 
-type RadioGroupProps = {
-  name: string
-  value: string
-  onChange: (value: string) => void // eslint-disable-line no-unused-vars
-  className?: string
-  children: React.ReactNode
-}
-
-function RadioGroup({
+const RadioGroup = ({
   name,
   value,
-  onChange,
+  onItemChange,
   className,
   children,
-}: RadioGroupProps) {
+}: ComponentProps<"div"> & {
+  name: string
+  value: string
+  onItemChange: (value: string) => void // eslint-disable-line no-unused-vars
+}) => {
   return (
     <div data-slot="radio-group" className={`${className} flex flex-col gap-3`}>
-      {React.Children.map(children, (child) => {
+      {Children.map(children, (child) => {
         if (
-          React.isValidElement<RadioGroupItemProps>(child) &&
+          isValidElement<
+            ComponentProps<"div"> & {
+              name: string
+              selectedValue?: string
+              value: string
+              onChange: (value: string) => void // eslint-disable-line no-unused-vars
+            }
+          >(child) &&
           typeof child.props.value === "string"
         ) {
-          return React.cloneElement(child, {
+          return cloneElement(child, {
             name,
             selectedValue: value,
-            onChange: () => onChange(child.props.value),
+            onChange: () => onItemChange(child.props.value),
           })
         }
         return child
@@ -34,25 +43,21 @@ function RadioGroup({
   )
 }
 
-type RadioGroupItemProps = {
-  value: string
-  name?: string
-  selectedValue?: string
-  onChange: (value: string) => void // eslint-disable-line no-unused-vars
-  className?: string
-  children?: React.ReactNode
-}
-
-function RadioGroupItem({
+const RadioGroupItem = ({
   value,
   name,
   selectedValue,
-  onChange,
+  onItemChange,
   className,
   children,
-}: RadioGroupItemProps) {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value)
+}: ComponentProps<"div"> & {
+  name: string
+  selectedValue?: string
+  value: string
+  onItemChange: (value: string) => void // eslint-disable-line no-unused-vars
+}) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onItemChange(event.target.value)
   }
   const id = `${name}-${value}`
 

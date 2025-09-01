@@ -1,9 +1,4 @@
-import React from "react"
-
-type AlertProps = {
-  variant?: "default" | "destructive"
-  className?: string
-}
+import { ComponentProps } from "react"
 
 const alertVariants = {
   default: "bg-background text-foreground",
@@ -11,11 +6,13 @@ const alertVariants = {
     "border-destructive/50 text-destructive dark:text-destructive-foreground/80 dark:border-destructive [&>img]:text-current dark:bg-destructive/50",
 }
 
-function Alert({
+const Alert = ({
   variant = "default",
   className,
   ...props
-}: React.ComponentProps<"div"> & AlertProps) {
+}: ComponentProps<"div"> & {
+  variant?: "default" | "destructive"
+}) => {
   return (
     <div
       data-slot="alert"
@@ -26,7 +23,7 @@ function Alert({
   )
 }
 
-function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
+const AlertTitle = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="alert-title"
@@ -36,10 +33,7 @@ function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function AlertDescription({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+const AlertDescription = ({ className, ...props }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="alert-description"

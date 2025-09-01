@@ -1,12 +1,8 @@
-import React from "react"
+import { ComponentProps } from "react"
 
 import Image, { ImageProps } from "next/image"
 
-function Avatar({
-  className,
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+const Avatar = ({ className, children, ...props }: ComponentProps<"div">) => {
   return (
     <div
       data-slot="avatar"
@@ -18,7 +14,11 @@ function Avatar({
   )
 }
 
-function AvatarImage({ className, alt, ...props }: Omit<ImageProps, "fill">) {
+const AvatarImage = ({
+  className,
+  alt,
+  ...props
+}: Omit<ImageProps, "fill">) => {
   return (
     <div
       data-slot="avatar-image"
@@ -35,11 +35,11 @@ function AvatarImage({ className, alt, ...props }: Omit<ImageProps, "fill">) {
   )
 }
 
-function AvatarFallback({
+const AvatarFallback = ({
   className,
   children,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: ComponentProps<"div">) => {
   return (
     <div
       data-slot="avatar-fallback"

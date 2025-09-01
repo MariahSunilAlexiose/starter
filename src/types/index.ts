@@ -105,12 +105,4 @@ export type ToastContextType = {
   ) => void
   removeToast: (id: string) => void
 }
-
-export type ToastProps = {
-  id: string
-  type: "success" | "error" | "info"
-  title: string
-  description: string
-  removeToast: (id: string) => void
-}
 /* eslint-enable*/
