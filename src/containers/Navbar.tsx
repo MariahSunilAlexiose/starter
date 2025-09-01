@@ -154,7 +154,7 @@ const Navbar = () => {
     <header className="bg-background">
       <NavigationMenu className="mx-auto mt-12 mb-6 !max-w-7xl !justify-between px-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <Image
               className="h-8 w-auto"
@@ -163,7 +163,7 @@ const Navbar = () => {
               width={10}
               height={10}
             />
-          </a>
+          </Link>
         </div>
 
         <div className="flex lg:hidden">
@@ -250,17 +250,17 @@ const Navbar = () => {
 
           <NavigationMenuItem>
             <NavigationMenuLink className={navigationMenuTriggerStyle}>
-              <Link href="/features">Features</Link>
+              <Link href="#">Features</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink className={navigationMenuTriggerStyle}>
-              <Link href="/marketplace">Marketplace</Link>
+              <Link href="#">Marketplace</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink className={navigationMenuTriggerStyle}>
-              <Link href="/company">Company</Link>
+              <Link href="#">Company</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
